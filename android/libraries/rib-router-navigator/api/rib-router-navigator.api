@@ -1,0 +1,109 @@
+public abstract interface class com/uber/rib/core/RouterNavigator {
+	public abstract fun hostWillDetach ()V
+	public abstract fun peekRouter ()Lcom/uber/rib/core/Router;
+	public abstract fun peekState ()Lcom/uber/rib/core/RouterNavigatorState;
+	public abstract fun popState ()V
+	public abstract fun pushRetainedState (Lcom/uber/rib/core/RouterNavigatorState;Lcom/uber/rib/core/RouterNavigator$AttachTransition;)V
+	public abstract fun pushRetainedState (Lcom/uber/rib/core/RouterNavigatorState;Lcom/uber/rib/core/RouterNavigator$AttachTransition;Lcom/uber/rib/core/RouterNavigator$DetachTransition;)V
+	public abstract fun pushState (Lcom/uber/rib/core/RouterNavigatorState;Lcom/uber/rib/core/RouterNavigator$AttachTransition;Lcom/uber/rib/core/RouterNavigator$DetachTransition;)V
+	public abstract fun pushState (Lcom/uber/rib/core/RouterNavigatorState;Lcom/uber/rib/core/RouterNavigator$Flag;Lcom/uber/rib/core/RouterNavigator$AttachTransition;Lcom/uber/rib/core/RouterNavigator$DetachTransition;)V
+	public abstract fun pushTransientState (Lcom/uber/rib/core/RouterNavigatorState;Lcom/uber/rib/core/RouterNavigator$AttachTransition;)V
+	public abstract fun pushTransientState (Lcom/uber/rib/core/RouterNavigatorState;Lcom/uber/rib/core/RouterNavigator$AttachTransition;Lcom/uber/rib/core/RouterNavigator$DetachTransition;)V
+	public abstract fun size ()I
+}
+
+public abstract interface class com/uber/rib/core/RouterNavigator$AttachTransition {
+	public abstract fun buildRouter ()Lcom/uber/rib/core/Router;
+	public abstract fun willAttachToHost (Lcom/uber/rib/core/Router;Lcom/uber/rib/core/RouterNavigatorState;Lcom/uber/rib/core/RouterNavigatorState;Z)V
+}
+
+public abstract class com/uber/rib/core/RouterNavigator$DetachCallback : com/uber/rib/core/RouterNavigator$DetachTransition {
+	public fun <init> ()V
+	public fun onPostDetachFromHost (Lcom/uber/rib/core/Router;Lcom/uber/rib/core/RouterNavigatorState;Z)V
+	public fun willDetachFromHost (Lcom/uber/rib/core/Router;Lcom/uber/rib/core/RouterNavigatorState;Lcom/uber/rib/core/RouterNavigatorState;Z)V
+}
+
+public final class com/uber/rib/core/RouterNavigator$DetachCallbackWrapper : com/uber/rib/core/RouterNavigator$DetachCallback {
+	public fun willDetachFromHost (Lcom/uber/rib/core/Router;Lcom/uber/rib/core/RouterNavigatorState;Lcom/uber/rib/core/RouterNavigatorState;Z)V
+}
+
+public abstract interface class com/uber/rib/core/RouterNavigator$DetachTransition {
+	public abstract fun willDetachFromHost (Lcom/uber/rib/core/Router;Lcom/uber/rib/core/RouterNavigatorState;Lcom/uber/rib/core/RouterNavigatorState;Z)V
+}
+
+public final class com/uber/rib/core/RouterNavigator$Flag : java/lang/Enum {
+	public static final field CLEAR_TOP Lcom/uber/rib/core/RouterNavigator$Flag;
+	public static final field DEFAULT Lcom/uber/rib/core/RouterNavigator$Flag;
+	public static final field NEW_TASK Lcom/uber/rib/core/RouterNavigator$Flag;
+	public static final field NEW_TASK_REPLACE Lcom/uber/rib/core/RouterNavigator$Flag;
+	public static final field REORDER_TO_TOP Lcom/uber/rib/core/RouterNavigator$Flag;
+	public static final field REPLACE_TOP Lcom/uber/rib/core/RouterNavigator$Flag;
+	public static final field SINGLE_TOP Lcom/uber/rib/core/RouterNavigator$Flag;
+	public static final field TRANSIENT Lcom/uber/rib/core/RouterNavigator$Flag;
+	public static fun valueOf (Ljava/lang/String;)Lcom/uber/rib/core/RouterNavigator$Flag;
+	public static fun values ()[Lcom/uber/rib/core/RouterNavigator$Flag;
+}
+
+public final class com/uber/rib/core/RouterNavigator$RouterAndState {
+	public fun getRouter ()Lcom/uber/rib/core/Router;
+	public fun getState ()Lcom/uber/rib/core/RouterNavigatorState;
+}
+
+public class com/uber/rib/core/RouterNavigatorEvent {
+	public fun <init> (Lcom/uber/rib/core/RouterNavigatorEventType;Lcom/uber/rib/core/Router;Lcom/uber/rib/core/Router;)V
+	public fun getEventType ()Lcom/uber/rib/core/RouterNavigatorEventType;
+	public fun getParentRouter ()Lcom/uber/rib/core/Router;
+	public fun getRouter ()Lcom/uber/rib/core/Router;
+}
+
+public final class com/uber/rib/core/RouterNavigatorEventType : java/lang/Enum {
+	public static final field WILL_ATTACH_TO_HOST Lcom/uber/rib/core/RouterNavigatorEventType;
+	public static fun valueOf (Ljava/lang/String;)Lcom/uber/rib/core/RouterNavigatorEventType;
+	public static fun values ()[Lcom/uber/rib/core/RouterNavigatorEventType;
+}
+
+public final class com/uber/rib/core/RouterNavigatorEvents {
+	public static final field Companion Lcom/uber/rib/core/RouterNavigatorEvents$Companion;
+	public final synthetic fun _getEvents ()Lio/reactivex/Observable;
+	public final fun emitEvent (Lcom/uber/rib/core/RouterNavigatorEventType;Lcom/uber/rib/core/Router;Lcom/uber/rib/core/Router;)V
+	public final fun getEvents ()Lio/reactivex/Observable;
+	public static final fun getInstance ()Lcom/uber/rib/core/RouterNavigatorEvents;
+}
+
+public final class com/uber/rib/core/RouterNavigatorEvents$Companion {
+	public final fun getInstance ()Lcom/uber/rib/core/RouterNavigatorEvents;
+}
+
+public final class com/uber/rib/core/RouterNavigatorFactory {
+	public fun <init> (Lcom/uber/rib/core/RouterNavigatorFactory$Strategy;)V
+	public fun create (Lcom/uber/rib/core/Router;)Lcom/uber/rib/core/RouterNavigator;
+}
+
+public abstract interface class com/uber/rib/core/RouterNavigatorFactory$Strategy {
+	public abstract fun create (Lcom/uber/rib/core/Router;)Lcom/uber/rib/core/RouterNavigator;
+}
+
+public abstract interface class com/uber/rib/core/RouterNavigatorState {
+	public fun stateName ()Ljava/lang/String;
+}
+
+public class com/uber/rib/core/StackRouterNavigator : com/uber/rib/core/RouterNavigator {
+	public static final field Companion Lcom/uber/rib/core/StackRouterNavigator$Companion;
+	public fun <init> (Lcom/uber/rib/core/Router;)V
+	public fun detachAll ()V
+	public fun hostWillDetach ()V
+	public fun peekRouter ()Lcom/uber/rib/core/Router;
+	public fun peekState ()Lcom/uber/rib/core/RouterNavigatorState;
+	public fun popState ()V
+	public fun pushRetainedState (Lcom/uber/rib/core/RouterNavigatorState;Lcom/uber/rib/core/RouterNavigator$AttachTransition;)V
+	public fun pushRetainedState (Lcom/uber/rib/core/RouterNavigatorState;Lcom/uber/rib/core/RouterNavigator$AttachTransition;Lcom/uber/rib/core/RouterNavigator$DetachTransition;)V
+	public fun pushState (Lcom/uber/rib/core/RouterNavigatorState;Lcom/uber/rib/core/RouterNavigator$AttachTransition;Lcom/uber/rib/core/RouterNavigator$DetachTransition;)V
+	public fun pushState (Lcom/uber/rib/core/RouterNavigatorState;Lcom/uber/rib/core/RouterNavigator$Flag;Lcom/uber/rib/core/RouterNavigator$AttachTransition;Lcom/uber/rib/core/RouterNavigator$DetachTransition;)V
+	public fun pushTransientState (Lcom/uber/rib/core/RouterNavigatorState;Lcom/uber/rib/core/RouterNavigator$AttachTransition;)V
+	public fun pushTransientState (Lcom/uber/rib/core/RouterNavigatorState;Lcom/uber/rib/core/RouterNavigator$AttachTransition;Lcom/uber/rib/core/RouterNavigator$DetachTransition;)V
+	public fun size ()I
+}
+
+public final class com/uber/rib/core/StackRouterNavigator$Companion {
+}
+

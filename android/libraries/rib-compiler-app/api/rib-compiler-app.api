@@ -1,0 +1,103 @@
+public abstract class com/uber/rib/compiler/AnnotatedClass {
+	public fun <init> (Ljavax/lang/model/element/TypeElement;)V
+	public abstract fun getNameSuffix ()Ljava/lang/String;
+	public fun getRootName ()Ljava/lang/String;
+	public fun getTypeElement ()Ljavax/lang/model/element/TypeElement;
+	public fun isCodeGenerated ()Z
+	public fun setCodeGenerated (Z)V
+}
+
+public class com/uber/rib/compiler/CompilerUtils {
+	public static final field Companion Lcom/uber/rib/compiler/CompilerUtils$Companion;
+	public fun <init> ()V
+	public static final fun packageNameOf (Ljavax/lang/model/element/Element;)Ljava/lang/String;
+}
+
+public final class com/uber/rib/compiler/CompilerUtils$Companion {
+	public final fun packageNameOf (Ljavax/lang/model/element/Element;)Ljava/lang/String;
+}
+
+public class com/uber/rib/compiler/Constants {
+	public static final field Companion Lcom/uber/rib/compiler/Constants$Companion;
+	public static final field INTERACTOR_SUFFIX Ljava/lang/String;
+	public fun <init> ()V
+}
+
+public final class com/uber/rib/compiler/Constants$Companion {
+}
+
+public class com/uber/rib/compiler/ErrorReporter {
+	public fun <init> (Ljavax/annotation/processing/Messager;)V
+	public final fun reportError$rib_compiler_app (Ljava/lang/CharSequence;)V
+}
+
+public abstract class com/uber/rib/compiler/Generator {
+	public fun <init> (Ljavax/annotation/processing/ProcessingEnvironment;Lcom/uber/rib/compiler/ErrorReporter;)V
+	public abstract fun generate (Lcom/uber/rib/compiler/AnnotatedClass;)V
+	protected final fun getErrorReporter ()Lcom/uber/rib/compiler/ErrorReporter;
+	protected final fun getProcessingEnvironment ()Ljavax/annotation/processing/ProcessingEnvironment;
+}
+
+public class com/uber/rib/compiler/InteractorAnnotatedClass : com/uber/rib/compiler/AnnotatedClass {
+	public fun <init> (Ljavax/lang/model/element/TypeElement;Ljava/util/List;Z)V
+	public fun getDependencies ()Ljava/util/List;
+	public fun getNameSuffix ()Ljava/lang/String;
+	public fun isBasic ()Z
+}
+
+public abstract interface class com/uber/rib/compiler/ProcessContext {
+	public abstract fun getElementUtils ()Ljavax/lang/model/util/Elements;
+	public abstract fun getErrorReporter ()Lcom/uber/rib/compiler/ErrorReporter;
+	public abstract fun getTypesUtils ()Ljavax/lang/model/util/Types;
+}
+
+public abstract class com/uber/rib/compiler/ProcessorPipeline {
+	public fun <init> (Lcom/uber/rib/compiler/ProcessContext;)V
+	public abstract fun getAnnotationType ()Ljava/lang/Class;
+	protected final fun getElementUtils ()Ljavax/lang/model/util/Elements;
+	protected final fun getErrorReporter ()Lcom/uber/rib/compiler/ErrorReporter;
+	protected final fun getProcessContext ()Lcom/uber/rib/compiler/ProcessContext;
+	protected final fun getTypesUtils ()Ljavax/lang/model/util/Types;
+	public final fun process (Ljava/util/Set;Ljavax/annotation/processing/RoundEnvironment;)Z
+	protected abstract fun processAnnotations (Ljava/util/Set;Ljavax/annotation/processing/RoundEnvironment;)V
+	protected final fun setElementUtils (Ljavax/lang/model/util/Elements;)V
+	protected final fun setErrorReporter (Lcom/uber/rib/compiler/ErrorReporter;)V
+	protected final fun setProcessContext (Lcom/uber/rib/compiler/ProcessContext;)V
+	protected final fun setTypesUtils (Ljavax/lang/model/util/Types;)V
+}
+
+public class com/uber/rib/compiler/RibInteractorProcessorPipeline : com/uber/rib/compiler/TypeProcessorPipeline {
+	public static final field Companion Lcom/uber/rib/compiler/RibInteractorProcessorPipeline$Companion;
+	public static final field SUPPORT_ANNOTATION_TYPE Ljava/lang/Class;
+	public fun <init> (Lcom/uber/rib/compiler/ProcessContext;Lcom/uber/rib/compiler/Generator;)V
+	protected final fun generateSource ()V
+	public fun getAnnotationType ()Ljava/lang/Class;
+	protected final fun parseTypeElements (Ljava/util/List;)V
+	protected fun processTypeElements (Ljava/util/List;)V
+}
+
+public final class com/uber/rib/compiler/RibInteractorProcessorPipeline$Companion {
+}
+
+public abstract class com/uber/rib/compiler/RibProcessor : javax/annotation/processing/AbstractProcessor, com/uber/rib/compiler/ProcessContext {
+	public fun <init> ()V
+	public fun getElementUtils ()Ljavax/lang/model/util/Elements;
+	public fun getErrorReporter ()Lcom/uber/rib/compiler/ErrorReporter;
+	public final fun getProcessorPipelines ()Ljava/util/List;
+	protected abstract fun getProcessorPipelines (Lcom/uber/rib/compiler/ProcessContext;)Ljava/util/List;
+	public fun getSupportedSourceVersion ()Ljavax/lang/model/SourceVersion;
+	public fun getTypesUtils ()Ljavax/lang/model/util/Types;
+	public fun init (Ljavax/annotation/processing/ProcessingEnvironment;)V
+	public fun process (Ljava/util/Set;Ljavax/annotation/processing/RoundEnvironment;)Z
+	protected fun setElementUtils (Ljavax/lang/model/util/Elements;)V
+	protected fun setErrorReporter (Lcom/uber/rib/compiler/ErrorReporter;)V
+	public final fun setProcessorPipelines (Ljava/util/List;)V
+	protected fun setTypesUtils (Ljavax/lang/model/util/Types;)V
+}
+
+public abstract class com/uber/rib/compiler/TypeProcessorPipeline : com/uber/rib/compiler/ProcessorPipeline {
+	public fun <init> (Lcom/uber/rib/compiler/ProcessContext;)V
+	protected fun processAnnotations (Ljava/util/Set;Ljavax/annotation/processing/RoundEnvironment;)V
+	protected abstract fun processTypeElements (Ljava/util/List;)V
+}
+

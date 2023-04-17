@@ -1,0 +1,255 @@
+public abstract class com/uber/rib/core/BasicInteractor : com/uber/rib/core/Interactor {
+	protected field presenter Ljava/lang/Object;
+	protected fun <init> (Ljava/lang/Object;)V
+}
+
+public abstract class com/uber/rib/core/BasicRouter : com/uber/rib/core/Router {
+	public fun <init> (Lcom/uber/rib/core/Interactor;)V
+}
+
+public abstract class com/uber/rib/core/Builder {
+	public fun <init> (Ljava/lang/Object;)V
+	protected final fun getDependency ()Ljava/lang/Object;
+}
+
+public class com/uber/rib/core/Bundle {
+	public fun <init> ()V
+	public fun <init> (Landroid/os/Bundle;)V
+	public synthetic fun <init> (Landroid/os/Bundle;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun getBoolean (Ljava/lang/String;Z)Z
+	public fun getBundleExtra (Ljava/lang/String;)Lcom/uber/rib/core/Bundle;
+	public fun getInt (Ljava/lang/String;I)I
+	public fun getParcelable (Ljava/lang/String;)Landroid/os/Parcelable;
+	public fun getString (Ljava/lang/String;)Ljava/lang/String;
+	public fun putBoolean (Ljava/lang/String;Z)V
+	public fun putBundleExtra (Ljava/lang/String;Lcom/uber/rib/core/Bundle;)V
+	public fun putInt (Ljava/lang/String;I)V
+	public fun putParcelable (Ljava/lang/String;Landroid/os/Parcelable;)V
+	public fun putString (Ljava/lang/String;Ljava/lang/String;)V
+}
+
+public class com/uber/rib/core/EmptyPresenter : com/uber/rib/core/Presenter {
+	public fun <init> ()V
+}
+
+public abstract interface annotation class com/uber/rib/core/Initializer : java/lang/annotation/Annotation {
+}
+
+public abstract class com/uber/rib/core/Interactor : com/uber/autodispose/lifecycle/LifecycleScopeProvider, com/uber/rib/core/InteractorType {
+	public static final field Companion Lcom/uber/rib/core/Interactor$Companion;
+	public field injectedPresenter Ljava/lang/Object;
+	public fun <init> ()V
+	protected fun <init> (Ljava/lang/Object;)V
+	public fun correspondingEvents ()Lcom/uber/autodispose/lifecycle/CorrespondingEventsFunction;
+	protected fun didBecomeActive (Lcom/uber/rib/core/Bundle;)V
+	public fun dispatchAttach (Lcom/uber/rib/core/Bundle;)V
+	public fun dispatchDetach ()Ljava/lang/Object;
+	public final fun getInjectedPresenter ()Ljava/lang/Object;
+	public fun getRouter ()Lcom/uber/rib/core/Router;
+	public fun handleBackPress ()Z
+	public fun isAttached ()Z
+	public fun lifecycle ()Lio/reactivex/Observable;
+	protected fun onSaveInstanceState (Lcom/uber/rib/core/Bundle;)V
+	public fun peekLifecycle ()Lcom/uber/rib/core/lifecycle/InteractorEvent;
+	public synthetic fun peekLifecycle ()Ljava/lang/Object;
+	public final fun requestScope ()Lio/reactivex/CompletableSource;
+	public final fun setInjectedPresenter (Ljava/lang/Object;)V
+	protected fun setRouter (Lcom/uber/rib/core/Router;)V
+	protected fun willResignActive ()V
+}
+
+public final class com/uber/rib/core/Interactor$Companion {
+}
+
+public abstract class com/uber/rib/core/InteractorAndViewModule : com/uber/rib/core/InteractorModule {
+	public fun <init> (Lcom/uber/rib/core/Interactor;Landroid/view/View;)V
+	protected final fun getView ()Landroid/view/View;
+}
+
+public abstract interface class com/uber/rib/core/InteractorBaseComponent {
+	public abstract fun inject (Lcom/uber/rib/core/Interactor;)V
+}
+
+public abstract interface class com/uber/rib/core/InteractorComponent : com/uber/rib/core/InteractorBaseComponent {
+	public abstract fun inject (Lcom/uber/rib/core/Interactor;)V
+	public abstract fun presenter ()Lcom/uber/rib/core/Presenter;
+}
+
+public abstract class com/uber/rib/core/InteractorModule {
+	public fun <init> (Lcom/uber/rib/core/Interactor;)V
+	protected final fun getInteractor ()Lcom/uber/rib/core/Interactor;
+}
+
+public abstract interface class com/uber/rib/core/InteractorType : com/uber/autodispose/lifecycle/LifecycleScopeProvider {
+	public abstract fun handleBackPress ()Z
+	public abstract fun isAttached ()Z
+}
+
+public final class com/uber/rib/core/Interactor_MembersInjector : dagger/MembersInjector {
+	public fun <init> (Ljavax/inject/Provider;)V
+	public static fun create (Ljavax/inject/Provider;)Ldagger/MembersInjector;
+	public static fun injectInjectedPresenter (Lcom/uber/rib/core/Interactor;Ljava/lang/Object;)V
+	public fun injectMembers (Lcom/uber/rib/core/Interactor;)V
+	public synthetic fun injectMembers (Ljava/lang/Object;)V
+}
+
+public abstract class com/uber/rib/core/Presenter : com/uber/autodispose/ScopeProvider {
+	public fun <init> ()V
+	protected fun didLoad ()V
+	public fun dispatchLoad ()V
+	public fun dispatchUnload ()V
+	protected final fun isLoaded ()Z
+	public fun lifecycle ()Lio/reactivex/Observable;
+	public fun requestScope ()Lio/reactivex/CompletableSource;
+	protected fun willUnload ()V
+}
+
+public class com/uber/rib/core/Rib {
+	public static final field Companion Lcom/uber/rib/core/Rib$Companion;
+	public fun <init> ()V
+	public static final fun getConfiguration ()Lcom/uber/rib/core/Rib$Configuration;
+	public static final fun setConfiguration (Lcom/uber/rib/core/Rib$Configuration;)V
+}
+
+public final class com/uber/rib/core/Rib$Companion {
+	public final fun getConfiguration ()Lcom/uber/rib/core/Rib$Configuration;
+	public final fun setConfiguration (Lcom/uber/rib/core/Rib$Configuration;)V
+}
+
+public abstract interface class com/uber/rib/core/Rib$Configuration {
+	public abstract fun handleDebugMessage (Ljava/lang/String;[Ljava/lang/Object;)V
+	public abstract fun handleNonFatalError (Ljava/lang/String;Ljava/lang/Throwable;)V
+	public abstract fun handleNonFatalWarning (Ljava/lang/String;Ljava/lang/Throwable;)V
+}
+
+public abstract interface annotation class com/uber/rib/core/RibBuilder : java/lang/annotation/Annotation {
+}
+
+public class com/uber/rib/core/RibEvent {
+	public fun <init> (Lcom/uber/rib/core/RibEventType;Lcom/uber/rib/core/Router;Lcom/uber/rib/core/Router;)V
+	public fun getEventType ()Lcom/uber/rib/core/RibEventType;
+	public fun getParentRouter ()Lcom/uber/rib/core/Router;
+	public fun getRouter ()Lcom/uber/rib/core/Router;
+}
+
+public final class com/uber/rib/core/RibEventType : java/lang/Enum {
+	public static final field ATTACHED Lcom/uber/rib/core/RibEventType;
+	public static final field DETACHED Lcom/uber/rib/core/RibEventType;
+	public static fun valueOf (Ljava/lang/String;)Lcom/uber/rib/core/RibEventType;
+	public static fun values ()[Lcom/uber/rib/core/RibEventType;
+}
+
+public final class com/uber/rib/core/RibEvents {
+	public static final field Companion Lcom/uber/rib/core/RibEvents$Companion;
+	public final fun emitEvent (Lcom/uber/rib/core/RibEventType;Lcom/uber/rib/core/Router;Lcom/uber/rib/core/Router;)V
+	public final fun getEvents ()Lio/reactivex/Observable;
+	public static final fun getInstance ()Lcom/uber/rib/core/RibEvents;
+}
+
+public final class com/uber/rib/core/RibEvents$Companion {
+	public final fun getInstance ()Lcom/uber/rib/core/RibEvents;
+}
+
+public abstract interface annotation class com/uber/rib/core/RibInteractor : java/lang/annotation/Annotation {
+}
+
+public class com/uber/rib/core/RibRefWatcher {
+	public static final field Companion Lcom/uber/rib/core/RibRefWatcher$Companion;
+	public fun <init> ()V
+	public fun disableLeakCanary ()V
+	public fun disableULeakLifecycleTracking ()V
+	public fun enableBreadcrumbLogging ()V
+	public fun enableLeakCanary ()V
+	public fun enableULeakLifecycleTracking ()V
+	public static final fun getInstance ()Lcom/uber/rib/core/RibRefWatcher;
+	public static final fun isLeakCanaryEnabled ()Z
+	public fun logBreadcrumb (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+	public fun setReferenceWatcher (Lcom/uber/rib/core/RibRefWatcher$ReferenceWatcher;)V
+	public fun watchDeletedObject (Ljava/lang/Object;)V
+}
+
+public final class com/uber/rib/core/RibRefWatcher$Companion {
+	public final fun getInstance ()Lcom/uber/rib/core/RibRefWatcher;
+	public final fun isLeakCanaryEnabled ()Z
+}
+
+public abstract interface class com/uber/rib/core/RibRefWatcher$ReferenceWatcher {
+	public abstract fun logBreadcrumb (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+	public abstract fun watch (Ljava/lang/Object;)V
+}
+
+public abstract class com/uber/rib/core/Router {
+	public static final field Companion Lcom/uber/rib/core/Router$Companion;
+	public static final field KEY_INTERACTOR Ljava/lang/String;
+	protected fun <init> (Lcom/uber/rib/core/InteractorBaseComponent;Lcom/uber/rib/core/InteractorType;Lcom/uber/rib/core/RibRefWatcher;Ljava/lang/Thread;)V
+	protected fun <init> (Lcom/uber/rib/core/InteractorType;)V
+	protected fun <init> (Lcom/uber/rib/core/InteractorType;Lcom/uber/rib/core/InteractorBaseComponent;)V
+	public fun attachChild (Lcom/uber/rib/core/Router;)V
+	public fun attachChild (Lcom/uber/rib/core/Router;Ljava/lang/String;)V
+	protected fun attachToInteractor ()V
+	public fun detachChild (Lcom/uber/rib/core/Router;)V
+	protected fun didLoad ()V
+	public fun dispatchAttach (Lcom/uber/rib/core/Bundle;)V
+	public fun dispatchAttach (Lcom/uber/rib/core/Bundle;Ljava/lang/String;)V
+	public fun dispatchDetach ()V
+	public fun getInteractor ()Lcom/uber/rib/core/InteractorType;
+	public static final fun getMainThread ()Ljava/lang/Thread;
+	public fun handleBackPress ()Z
+	protected final fun inject (Lcom/uber/rib/core/InteractorBaseComponent;)V
+	protected fun saveInstanceState (Lcom/uber/rib/core/Bundle;)V
+	protected fun willAttach ()V
+	protected fun willDetach ()V
+}
+
+public final class com/uber/rib/core/Router$Companion {
+	public final fun getKEY_CHILD_ROUTERS ()Ljava/lang/String;
+	public final fun getMainThread ()Ljava/lang/Thread;
+}
+
+public abstract interface class com/uber/rib/core/Worker {
+	public fun onStart (Lcom/uber/rib/core/WorkerScopeProvider;)V
+	public fun onStop ()V
+}
+
+public final class com/uber/rib/core/WorkerBinder {
+	public static final field INSTANCE Lcom/uber/rib/core/WorkerBinder;
+	public static fun bind (Lcom/uber/rib/core/Interactor;Lcom/uber/rib/core/Worker;)Lcom/uber/rib/core/WorkerUnbinder;
+	public static fun bind (Lcom/uber/rib/core/Interactor;Ljava/util/List;)V
+	public static fun bind (Lcom/uber/rib/core/Presenter;Lcom/uber/rib/core/Worker;)Lcom/uber/rib/core/WorkerUnbinder;
+	public static fun bind (Lcom/uber/rib/core/Presenter;Ljava/util/List;)V
+	public static fun bind (Lio/reactivex/Observable;Lcom/uber/rib/core/Worker;)Lcom/uber/rib/core/WorkerUnbinder;
+	public static fun bindTo (Lcom/uber/autodispose/lifecycle/LifecycleScopeProvider;Lcom/uber/rib/core/Worker;)V
+	public static final fun bindToWorkerLifecycle (Lio/reactivex/Observable;Lcom/uber/rib/core/Worker;)V
+	public static final fun mapInteractorLifecycleToWorker (Lio/reactivex/Observable;)Lio/reactivex/Observable;
+	public static final fun mapPresenterLifecycleToWorker (Lio/reactivex/Observable;)Lio/reactivex/Observable;
+}
+
+public class com/uber/rib/core/WorkerScopeProvider : com/uber/autodispose/ScopeProvider {
+	public fun requestScope ()Lio/reactivex/CompletableSource;
+}
+
+public abstract interface class com/uber/rib/core/WorkerUnbinder {
+	public abstract fun unbind ()V
+}
+
+public final class com/uber/rib/core/lifecycle/InteractorEvent : java/lang/Enum {
+	public static final field ACTIVE Lcom/uber/rib/core/lifecycle/InteractorEvent;
+	public static final field INACTIVE Lcom/uber/rib/core/lifecycle/InteractorEvent;
+	public static fun valueOf (Ljava/lang/String;)Lcom/uber/rib/core/lifecycle/InteractorEvent;
+	public static fun values ()[Lcom/uber/rib/core/lifecycle/InteractorEvent;
+}
+
+public final class com/uber/rib/core/lifecycle/PresenterEvent : java/lang/Enum {
+	public static final field LOADED Lcom/uber/rib/core/lifecycle/PresenterEvent;
+	public static final field UNLOADED Lcom/uber/rib/core/lifecycle/PresenterEvent;
+	public static fun valueOf (Ljava/lang/String;)Lcom/uber/rib/core/lifecycle/PresenterEvent;
+	public static fun values ()[Lcom/uber/rib/core/lifecycle/PresenterEvent;
+}
+
+public final class com/uber/rib/core/lifecycle/WorkerEvent : java/lang/Enum {
+	public static final field START Lcom/uber/rib/core/lifecycle/WorkerEvent;
+	public static final field STOP Lcom/uber/rib/core/lifecycle/WorkerEvent;
+	public static fun valueOf (Ljava/lang/String;)Lcom/uber/rib/core/lifecycle/WorkerEvent;
+	public static fun values ()[Lcom/uber/rib/core/lifecycle/WorkerEvent;
+}
+

@@ -1,0 +1,32 @@
+public abstract interface class com/uber/rib/core/screenstack/ScreenStackBase {
+	public abstract fun handleBackPress ()Z
+	public abstract fun handleBackPress (Z)Z
+	public abstract fun popBackTo (IZ)V
+	public abstract fun popScreen ()V
+	public abstract fun popScreen (Z)V
+	public abstract fun pushScreen (Lcom/uber/rib/core/screenstack/ViewProvider;)V
+	public abstract fun pushScreen (Lcom/uber/rib/core/screenstack/ViewProvider;Z)V
+	public abstract fun size ()I
+}
+
+public abstract class com/uber/rib/core/screenstack/ViewProvider {
+	public fun <init> ()V
+	public abstract fun buildView (Landroid/view/ViewGroup;)Landroid/view/View;
+	public fun buildViewInternal (Landroid/view/ViewGroup;)Landroid/view/View;
+	protected fun doOnViewRemoved ()V
+	public fun lifecycle ()Lio/reactivex/Observable;
+	public fun onBackPress ()Z
+	public fun onViewAppeared ()V
+	public fun onViewHidden ()V
+	public final fun onViewRemoved ()V
+}
+
+public final class com/uber/rib/core/screenstack/lifecycle/ScreenStackEvent : java/lang/Enum {
+	public static final field APPEARED Lcom/uber/rib/core/screenstack/lifecycle/ScreenStackEvent;
+	public static final field BUILT Lcom/uber/rib/core/screenstack/lifecycle/ScreenStackEvent;
+	public static final field HIDDEN Lcom/uber/rib/core/screenstack/lifecycle/ScreenStackEvent;
+	public static final field REMOVED Lcom/uber/rib/core/screenstack/lifecycle/ScreenStackEvent;
+	public static fun valueOf (Ljava/lang/String;)Lcom/uber/rib/core/screenstack/lifecycle/ScreenStackEvent;
+	public static fun values ()[Lcom/uber/rib/core/screenstack/lifecycle/ScreenStackEvent;
+}
+

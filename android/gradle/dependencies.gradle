@@ -36,7 +36,8 @@ def versions = [
     ktlint: '0.41.0',
     motif: '0.3.4',
     robolectric: "4.4",
-    spotless: '5.11.0'
+    spotless: '5.11.0',
+    binaryCompatibilityValidator: "0.13.0"
 ]
 
 def apt = [
@@ -77,7 +78,8 @@ def build = [
         kapt: "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin}",
         kotlin: "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin}",
         nullaway: "net.ltgt.gradle:gradle-nullaway-plugin:1.0.2",
-        spotless: "com.diffplug.spotless:spotless-plugin-gradle:${versions.spotless}"
+        spotless: "com.diffplug.spotless:spotless-plugin-gradle:${versions.spotless}",
+        binaryCompatibilityValidator: "org.jetbrains.kotlinx:binary-compatibility-validator:${versions.binaryCompatibilityValidator}"
     ]
 ]
 

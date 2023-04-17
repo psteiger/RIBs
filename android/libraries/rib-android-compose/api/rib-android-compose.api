@@ -1,0 +1,22 @@
+public class com/uber/rib/core/BasicComposeRouter : com/uber/rib/core/BasicRouter {
+	public static final field $stable I
+	public fun <init> (Lcom/uber/rib/core/ComposePresenter;Lcom/uber/rib/core/BasicInteractor;Landroidx/compose/runtime/MutableState;)V
+	public final fun getPresenter ()Lcom/uber/rib/core/ComposePresenter;
+	public final fun getSlot ()Landroidx/compose/runtime/MutableState;
+	protected fun willAttach ()V
+	protected fun willDetach ()V
+}
+
+public final class com/uber/rib/core/ComposableSingletons$BasicComposeRouterKt {
+	public static final field INSTANCE Lcom/uber/rib/core/ComposableSingletons$BasicComposeRouterKt;
+	public static field lambda-1 Lkotlin/jvm/functions/Function2;
+	public fun <init> ()V
+	public final fun getLambda-1$rib_android_compose_release ()Lkotlin/jvm/functions/Function2;
+}
+
+public abstract class com/uber/rib/core/ComposePresenter : com/uber/rib/core/Presenter {
+	public static final field $stable I
+	public fun <init> ()V
+	public abstract fun getComposable ()Lkotlin/jvm/functions/Function2;
+}
+

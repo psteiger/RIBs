@@ -1,0 +1,27 @@
+public abstract interface class com/uber/rib/core/ActivityDelegate {
+	public fun onActivityResult (Landroid/app/Activity;IILandroid/content/Intent;)V
+	public fun onCreate (Landroid/os/Bundle;)V
+	public fun onDestroy ()V
+	public fun onPause ()V
+	public fun onRequestPermissionsResult (Landroid/app/Activity;I[Ljava/lang/String;[I)V
+	public fun onResume ()V
+	public fun onStart ()V
+	public fun onStop ()V
+}
+
+public abstract class com/uber/rib/core/CoreAppCompatActivity : androidx/appcompat/app/AppCompatActivity {
+	public fun <init> ()V
+	protected fun onActivityResult (IILandroid/content/Intent;)V
+	protected fun onCreate (Landroid/os/Bundle;)V
+	protected fun onDestroy ()V
+	protected fun onPause ()V
+	public fun onRequestPermissionsResult (I[Ljava/lang/String;[I)V
+	protected fun onResume ()V
+	protected fun onStart ()V
+	protected fun onStop ()V
+}
+
+public abstract interface class com/uber/rib/core/HasActivityDelegate {
+	public abstract fun activityDelegate ()Lcom/uber/rib/core/ActivityDelegate;
+}
+

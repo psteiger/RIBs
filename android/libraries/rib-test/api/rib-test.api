@@ -1,0 +1,78 @@
+public class com/uber/rib/core/AndroidRecordingRx2Observer : io/reactivex/Observer {
+	public fun <init> ()V
+	public fun assertNoMoreEvents ()V
+	public fun onComplete ()V
+	public fun onError (Ljava/lang/Throwable;)V
+	public fun onNext (Ljava/lang/Object;)V
+	public fun onSubscribe (Lio/reactivex/disposables/Disposable;)V
+	public fun takeError ()Ljava/lang/Throwable;
+	public fun takeNext ()Ljava/lang/Object;
+}
+
+public final class com/uber/rib/core/FakeComponent : com/uber/rib/core/InteractorComponent {
+	public static final field Companion Lcom/uber/rib/core/FakeComponent$Companion;
+	public synthetic fun <init> (Lcom/uber/rib/core/Presenter;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun inject (Lcom/uber/rib/core/Interactor;)V
+	public fun presenter ()Lcom/uber/rib/core/Presenter;
+	public static final fun withFakePresenterFor (Ljava/lang/Class;)Lcom/uber/rib/core/FakeComponent;
+}
+
+public final class com/uber/rib/core/FakeComponent$Companion {
+	public final fun withFakePresenterFor (Ljava/lang/Class;)Lcom/uber/rib/core/FakeComponent;
+}
+
+public class com/uber/rib/core/FakeInteractor : com/uber/rib/core/Interactor {
+	public fun <init> ()V
+	public fun attach ()V
+	public fun detach ()V
+}
+
+public final class com/uber/rib/core/FakePresenter : com/uber/rib/core/Presenter {
+	public fun <init> ()V
+}
+
+public final class com/uber/rib/core/FakeRouter : com/uber/rib/core/Router {
+	public fun <init> (Lcom/uber/rib/core/Interactor;)V
+	public fun <init> (Lcom/uber/rib/core/Interactor;Lcom/uber/rib/core/RibRefWatcher;Ljava/lang/Thread;)V
+}
+
+public final class com/uber/rib/core/InteractorHelper {
+	public static final field INSTANCE Lcom/uber/rib/core/InteractorHelper;
+	public static fun attach (Lcom/uber/rib/core/Interactor;Ljava/lang/Object;Lcom/uber/rib/core/Router;Lcom/uber/rib/core/Bundle;)V
+	public static fun detach (Lcom/uber/rib/core/Interactor;)V
+	public static fun reattach (Lcom/uber/rib/core/Interactor;Lcom/uber/rib/core/Bundle;)V
+	public static fun verifyAttached (Lcom/uber/rib/core/Interactor;)V
+	public static fun verifyDetached (Lcom/uber/rib/core/Interactor;)V
+}
+
+public final class com/uber/rib/core/PresenterHelper {
+	public static final field INSTANCE Lcom/uber/rib/core/PresenterHelper;
+	public static fun load (Lcom/uber/rib/core/Presenter;)V
+	public static fun unload (Lcom/uber/rib/core/Presenter;)V
+}
+
+public class com/uber/rib/core/RibTestBasePlaceholder {
+	public fun <init> ()V
+}
+
+public final class com/uber/rib/core/RouterHelper {
+	public static final field INSTANCE Lcom/uber/rib/core/RouterHelper;
+	public static fun attach (Lcom/uber/rib/core/Router;)V
+	public static fun detach (Lcom/uber/rib/core/Router;)V
+	public static fun verifyAttached (Lcom/uber/rib/core/Router;)V
+	public static fun verifyAttached (Lcom/uber/rib/core/Router;I)V
+	public static fun verifyAttached (Lcom/uber/rib/core/Router;Ljava/lang/String;)V
+	public static fun verifyAttached (Lcom/uber/rib/core/Router;Lorg/mockito/verification/VerificationMode;)V
+	public static fun verifyAttached (Lorg/mockito/InOrder;Lcom/uber/rib/core/Router;)V
+	public static fun verifyDetached (Lcom/uber/rib/core/Router;)V
+	public static fun verifyDetached (Lcom/uber/rib/core/Router;Lorg/mockito/verification/VerificationMode;)V
+	public static fun verifyDetached (Lorg/mockito/InOrder;Lcom/uber/rib/core/Router;)V
+	public static fun verifyNotAttached (Lcom/uber/rib/core/Router;)V
+	public static fun verifyNotDetached (Lcom/uber/rib/core/Router;)V
+}
+
+public final class com/uber/rib/core/WorkerHelper {
+	public static final field INSTANCE Lcom/uber/rib/core/WorkerHelper;
+	public static fun createScopeProvider (Lio/reactivex/Observable;)Lcom/uber/rib/core/WorkerScopeProvider;
+}
+

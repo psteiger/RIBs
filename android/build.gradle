@@ -30,7 +30,15 @@ buildscript {
         classpath deps.build.gradlePlugins.kotlin
         classpath deps.build.gradlePlugins.spotless
         classpath deps.build.gradlePlugins.gradleMavenPublish
+        classpath deps.build.gradlePlugins.binaryCompatibilityValidator
     }
+}
+
+apply plugin: 'binary-compatibility-validator'
+
+apiValidation {
+    /** Sub-projects that are excluded from API validation */
+    ignoredProjects += ["demos", "tooling", "tutorials"]
 }
 
 Set<String> useErrorProneProjects = [

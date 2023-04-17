@@ -1,0 +1,215 @@
+public abstract interface annotation class com/uber/rib/core/ActivityContext : java/lang/annotation/Annotation {
+}
+
+public abstract interface class com/uber/rib/core/ActivityStarter {
+	public abstract fun startActivity (Landroid/content/Intent;)V
+	public abstract fun startActivityForResult (Landroid/content/Intent;I)V
+}
+
+public abstract class com/uber/rib/core/BasicViewRouter : com/uber/rib/core/ViewRouter {
+	public fun <init> (Landroid/view/View;Lcom/uber/rib/core/Interactor;)V
+}
+
+public abstract interface class com/uber/rib/core/IntentCreator {
+	public abstract fun create (Ljava/lang/Class;)Landroid/content/Intent;
+	public abstract fun create (Ljava/lang/String;)Landroid/content/Intent;
+}
+
+public class com/uber/rib/core/IntentCreatorImpl : com/uber/rib/core/IntentCreator {
+	public fun <init> (Landroid/content/Context;)V
+	public fun create (Ljava/lang/Class;)Landroid/content/Intent;
+	public fun create (Ljava/lang/String;)Landroid/content/Intent;
+}
+
+public abstract interface class com/uber/rib/core/IntentFactory {
+	public abstract fun create (Lcom/uber/rib/core/IntentCreator;)Landroid/content/Intent;
+}
+
+public abstract class com/uber/rib/core/RibActivity : com/uber/rib/core/CoreAppCompatActivity, com/uber/autodispose/lifecycle/LifecycleScopeProvider, com/uber/rib/core/ActivityStarter, com/uber/rib/core/RxActivityEvents {
+	public static final field Companion Lcom/uber/rib/core/RibActivity$Companion;
+	public fun <init> ()V
+	public fun callbacks ()Lio/reactivex/Observable;
+	public fun correspondingEvents ()Lcom/uber/autodispose/lifecycle/CorrespondingEventsFunction;
+	protected abstract fun createRouter (Landroid/view/ViewGroup;)Lcom/uber/rib/core/ViewRouter;
+	public fun getInteractor ()Lcom/uber/rib/core/Interactor;
+	public fun lifecycle ()Lio/reactivex/Observable;
+	protected fun onActivityResult (IILandroid/content/Intent;)V
+	public fun onBackPressed ()V
+	protected fun onCreate (Landroid/os/Bundle;)V
+	protected fun onDestroy ()V
+	public fun onLowMemory ()V
+	protected fun onNewIntent (Landroid/content/Intent;)V
+	protected fun onPause ()V
+	public fun onPictureInPictureModeChanged (ZLandroid/content/res/Configuration;)V
+	protected fun onResume ()V
+	protected fun onSaveInstanceState (Landroid/os/Bundle;)V
+	protected fun onStart ()V
+	protected fun onStop ()V
+	public fun onTrimMemory (I)V
+	protected fun onUnhandledBackPressed ()V
+	protected fun onUserLeaveHint ()V
+	public fun onWindowFocusChanged (Z)V
+	public fun peekLifecycle ()Lcom/uber/rib/core/lifecycle/ActivityLifecycleEvent;
+	public synthetic fun peekLifecycle ()Ljava/lang/Object;
+	public fun requestScope ()Lio/reactivex/CompletableSource;
+}
+
+public final class com/uber/rib/core/RibActivity$Companion {
+}
+
+public class com/uber/rib/core/RibDebugOverlay : android/graphics/drawable/Drawable {
+	public static final field Companion Lcom/uber/rib/core/RibDebugOverlay$Companion;
+	public fun <init> ()V
+	public fun draw (Landroid/graphics/Canvas;)V
+	public fun getOpacity ()I
+	public fun setAlpha (I)V
+	public fun setColorFilter (Landroid/graphics/ColorFilter;)V
+	public fun setEnabled (Z)V
+}
+
+public final class com/uber/rib/core/RibDebugOverlay$Companion {
+}
+
+public abstract interface class com/uber/rib/core/RxActivityEvents {
+	public abstract fun callbacks ()Lio/reactivex/Observable;
+	public fun callbacks (Ljava/lang/Class;)Lio/reactivex/Observable;
+	public abstract fun lifecycle ()Lio/reactivex/Observable;
+	public fun lifecycle (Ljava/lang/Class;)Lio/reactivex/Observable;
+}
+
+public abstract class com/uber/rib/core/ViewBuilder : com/uber/rib/core/Builder {
+	public fun <init> (Ljava/lang/Object;)V
+	public final fun createView (Landroid/view/ViewGroup;)Landroid/view/View;
+	protected abstract fun inflateView (Landroid/view/LayoutInflater;Landroid/view/ViewGroup;)Landroid/view/View;
+	protected fun onThemeContext (Landroid/content/Context;)Landroid/content/Context;
+}
+
+public abstract class com/uber/rib/core/ViewPresenter : com/uber/rib/core/Presenter {
+	public fun <init> (Landroid/view/View;)V
+	public final fun getView ()Landroid/view/View;
+}
+
+public abstract class com/uber/rib/core/ViewRouter : com/uber/rib/core/Router {
+	protected fun <init> (Landroid/view/View;Lcom/uber/rib/core/Interactor;)V
+	public fun <init> (Landroid/view/View;Lcom/uber/rib/core/Interactor;Lcom/uber/rib/core/InteractorBaseComponent;)V
+	public fun getView ()Landroid/view/View;
+}
+
+public final class com/uber/rib/core/XRay {
+	public static final field Companion Lcom/uber/rib/core/XRay$Companion;
+	public static final fun apply (Lcom/uber/rib/core/ViewRouter;Landroid/view/View;)V
+	public static final fun isEnabled ()Z
+	public static final fun toggle ()V
+}
+
+public final class com/uber/rib/core/XRay$Companion {
+	public final fun apply (Lcom/uber/rib/core/ViewRouter;Landroid/view/View;)V
+	public final fun isEnabled ()Z
+	public final fun toggle ()V
+}
+
+public class com/uber/rib/core/lifecycle/ActivityCallbackEvent : com/uber/rib/core/lifecycle/ActivityEvent {
+	public static final field Companion Lcom/uber/rib/core/lifecycle/ActivityCallbackEvent$Companion;
+	public synthetic fun <init> (Lcom/uber/rib/core/lifecycle/ActivityCallbackEvent$Type;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public static final fun create (Lcom/uber/rib/core/lifecycle/ActivityCallbackEvent$Type;)Lcom/uber/rib/core/lifecycle/ActivityCallbackEvent;
+	public static final fun createNewIntent (Landroid/content/Intent;)Lcom/uber/rib/core/lifecycle/ActivityCallbackEvent$NewIntent;
+	public static final fun createOnActivityResultEvent (IILandroid/content/Intent;)Lcom/uber/rib/core/lifecycle/ActivityCallbackEvent$ActivityResult;
+	public static final fun createOnSaveInstanceStateEvent (Landroid/os/Bundle;)Lcom/uber/rib/core/lifecycle/ActivityCallbackEvent;
+	public static final fun createPictureInPictureMode (Z)Lcom/uber/rib/core/lifecycle/ActivityCallbackEvent$PictureInPictureMode;
+	public static final fun createTrimMemoryEvent (I)Lcom/uber/rib/core/lifecycle/ActivityCallbackEvent$TrimMemory;
+	public static final fun createWindowFocusEvent (Z)Lcom/uber/rib/core/lifecycle/ActivityCallbackEvent$WindowFocus;
+	public fun getType ()Lcom/uber/rib/core/lifecycle/ActivityCallbackEvent$Type;
+	public synthetic fun getType ()Lcom/uber/rib/core/lifecycle/ActivityEvent$BaseType;
+}
+
+public class com/uber/rib/core/lifecycle/ActivityCallbackEvent$ActivityResult : com/uber/rib/core/lifecycle/ActivityCallbackEvent {
+	public fun <init> (Landroid/content/Intent;II)V
+	public fun getData ()Landroid/content/Intent;
+	public fun getRequestCode ()I
+	public fun getResultCode ()I
+}
+
+public final class com/uber/rib/core/lifecycle/ActivityCallbackEvent$Companion {
+	public final fun create (Lcom/uber/rib/core/lifecycle/ActivityCallbackEvent$Type;)Lcom/uber/rib/core/lifecycle/ActivityCallbackEvent;
+	public final fun createNewIntent (Landroid/content/Intent;)Lcom/uber/rib/core/lifecycle/ActivityCallbackEvent$NewIntent;
+	public final fun createOnActivityResultEvent (IILandroid/content/Intent;)Lcom/uber/rib/core/lifecycle/ActivityCallbackEvent$ActivityResult;
+	public final fun createOnSaveInstanceStateEvent (Landroid/os/Bundle;)Lcom/uber/rib/core/lifecycle/ActivityCallbackEvent;
+	public final fun createPictureInPictureMode (Z)Lcom/uber/rib/core/lifecycle/ActivityCallbackEvent$PictureInPictureMode;
+	public final fun createTrimMemoryEvent (I)Lcom/uber/rib/core/lifecycle/ActivityCallbackEvent$TrimMemory;
+	public final fun createWindowFocusEvent (Z)Lcom/uber/rib/core/lifecycle/ActivityCallbackEvent$WindowFocus;
+}
+
+public class com/uber/rib/core/lifecycle/ActivityCallbackEvent$NewIntent : com/uber/rib/core/lifecycle/ActivityCallbackEvent {
+	public fun <init> (Landroid/content/Intent;)V
+	public fun getIntent ()Landroid/content/Intent;
+}
+
+public class com/uber/rib/core/lifecycle/ActivityCallbackEvent$PictureInPictureMode : com/uber/rib/core/lifecycle/ActivityCallbackEvent {
+	public fun <init> (Z)V
+	public fun isInPictureInPictureMode ()Z
+}
+
+public class com/uber/rib/core/lifecycle/ActivityCallbackEvent$SaveInstanceState : com/uber/rib/core/lifecycle/ActivityCallbackEvent {
+	public fun <init> (Landroid/os/Bundle;)V
+	public fun getOutState ()Landroid/os/Bundle;
+}
+
+public class com/uber/rib/core/lifecycle/ActivityCallbackEvent$TrimMemory : com/uber/rib/core/lifecycle/ActivityCallbackEvent {
+	public fun getTrimMemoryType ()I
+}
+
+public final class com/uber/rib/core/lifecycle/ActivityCallbackEvent$Type : java/lang/Enum, com/uber/rib/core/lifecycle/ActivityEvent$BaseType {
+	public static final field ACTIVITY_RESULT Lcom/uber/rib/core/lifecycle/ActivityCallbackEvent$Type;
+	public static final field LOW_MEMORY Lcom/uber/rib/core/lifecycle/ActivityCallbackEvent$Type;
+	public static final field NEW_INTENT Lcom/uber/rib/core/lifecycle/ActivityCallbackEvent$Type;
+	public static final field PICTURE_IN_PICTURE_MODE Lcom/uber/rib/core/lifecycle/ActivityCallbackEvent$Type;
+	public static final field SAVE_INSTANCE_STATE Lcom/uber/rib/core/lifecycle/ActivityCallbackEvent$Type;
+	public static final field TRIM_MEMORY Lcom/uber/rib/core/lifecycle/ActivityCallbackEvent$Type;
+	public static final field WINDOW_FOCUS Lcom/uber/rib/core/lifecycle/ActivityCallbackEvent$Type;
+	public static fun valueOf (Ljava/lang/String;)Lcom/uber/rib/core/lifecycle/ActivityCallbackEvent$Type;
+	public static fun values ()[Lcom/uber/rib/core/lifecycle/ActivityCallbackEvent$Type;
+}
+
+public class com/uber/rib/core/lifecycle/ActivityCallbackEvent$WindowFocus : com/uber/rib/core/lifecycle/ActivityCallbackEvent {
+	public fun <init> (Z)V
+	public fun getHasFocus ()Z
+}
+
+public abstract interface class com/uber/rib/core/lifecycle/ActivityEvent {
+	public abstract fun getType ()Lcom/uber/rib/core/lifecycle/ActivityEvent$BaseType;
+}
+
+public abstract interface class com/uber/rib/core/lifecycle/ActivityEvent$BaseType {
+}
+
+public class com/uber/rib/core/lifecycle/ActivityLifecycleEvent : com/uber/rib/core/lifecycle/ActivityEvent {
+	public static final field Companion Lcom/uber/rib/core/lifecycle/ActivityLifecycleEvent$Companion;
+	public synthetic fun <init> (Lcom/uber/rib/core/lifecycle/ActivityLifecycleEvent$Type;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public static final fun create (Lcom/uber/rib/core/lifecycle/ActivityLifecycleEvent$Type;)Lcom/uber/rib/core/lifecycle/ActivityLifecycleEvent;
+	public static final fun createOnCreateEvent (Landroid/os/Bundle;)Lcom/uber/rib/core/lifecycle/ActivityLifecycleEvent$Create;
+	public synthetic fun getType ()Lcom/uber/rib/core/lifecycle/ActivityEvent$BaseType;
+	public fun getType ()Lcom/uber/rib/core/lifecycle/ActivityLifecycleEvent$Type;
+}
+
+public final class com/uber/rib/core/lifecycle/ActivityLifecycleEvent$Companion {
+	public final fun create (Lcom/uber/rib/core/lifecycle/ActivityLifecycleEvent$Type;)Lcom/uber/rib/core/lifecycle/ActivityLifecycleEvent;
+	public final fun createOnCreateEvent (Landroid/os/Bundle;)Lcom/uber/rib/core/lifecycle/ActivityLifecycleEvent$Create;
+}
+
+public class com/uber/rib/core/lifecycle/ActivityLifecycleEvent$Create : com/uber/rib/core/lifecycle/ActivityLifecycleEvent {
+	public fun <init> (Landroid/os/Bundle;)V
+	public fun getSavedInstanceState ()Landroid/os/Bundle;
+}
+
+public final class com/uber/rib/core/lifecycle/ActivityLifecycleEvent$Type : java/lang/Enum, com/uber/rib/core/lifecycle/ActivityEvent$BaseType {
+	public static final field CREATE Lcom/uber/rib/core/lifecycle/ActivityLifecycleEvent$Type;
+	public static final field DESTROY Lcom/uber/rib/core/lifecycle/ActivityLifecycleEvent$Type;
+	public static final field PAUSE Lcom/uber/rib/core/lifecycle/ActivityLifecycleEvent$Type;
+	public static final field RESUME Lcom/uber/rib/core/lifecycle/ActivityLifecycleEvent$Type;
+	public static final field START Lcom/uber/rib/core/lifecycle/ActivityLifecycleEvent$Type;
+	public static final field STOP Lcom/uber/rib/core/lifecycle/ActivityLifecycleEvent$Type;
+	public static final field USER_LEAVING Lcom/uber/rib/core/lifecycle/ActivityLifecycleEvent$Type;
+	public static fun valueOf (Ljava/lang/String;)Lcom/uber/rib/core/lifecycle/ActivityLifecycleEvent$Type;
+	public static fun values ()[Lcom/uber/rib/core/lifecycle/ActivityLifecycleEvent$Type;
+}
+

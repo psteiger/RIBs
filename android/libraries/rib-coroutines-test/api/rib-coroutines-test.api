@@ -1,0 +1,47 @@
+public final class com/uber/rib/core/RibCoroutinesRule : org/junit/rules/TestWatcher {
+	public fun <init> ()V
+	public fun <init> (Lcom/uber/rib/core/TestRibDispatchers;)V
+	public synthetic fun <init> (Lcom/uber/rib/core/TestRibDispatchers;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun getRibDispatchers ()Lcom/uber/rib/core/TestRibDispatchers;
+}
+
+public final class com/uber/rib/core/TestRibCoroutineScopesKt {
+	public static final fun asTestScope (Lcom/uber/autodispose/ScopeProvider;Lkotlin/coroutines/CoroutineContext;)Lkotlinx/coroutines/test/TestScope;
+	public static final fun asTestScope (Lio/reactivex/CompletableSource;Lkotlin/coroutines/CoroutineContext;)Lkotlinx/coroutines/test/TestScope;
+	public static synthetic fun asTestScope$default (Lcom/uber/autodispose/ScopeProvider;Lkotlin/coroutines/CoroutineContext;ILjava/lang/Object;)Lkotlinx/coroutines/test/TestScope;
+	public static synthetic fun asTestScope$default (Lio/reactivex/CompletableSource;Lkotlin/coroutines/CoroutineContext;ILjava/lang/Object;)Lkotlinx/coroutines/test/TestScope;
+	public static final fun disableTestScopeOverride (Landroid/app/Application;)V
+	public static final fun disableTestScopeOverride (Lcom/uber/autodispose/ScopeProvider;)V
+	public static final fun enableTestScopeOverride (Landroid/app/Application;Lkotlin/coroutines/CoroutineContext;)V
+	public static final fun enableTestScopeOverride (Lcom/uber/autodispose/ScopeProvider;Lkotlin/coroutines/CoroutineContext;)V
+	public static synthetic fun enableTestScopeOverride$default (Landroid/app/Application;Lkotlin/coroutines/CoroutineContext;ILjava/lang/Object;)V
+	public static synthetic fun enableTestScopeOverride$default (Lcom/uber/autodispose/ScopeProvider;Lkotlin/coroutines/CoroutineContext;ILjava/lang/Object;)V
+	public static final fun getTestScopeOverride (Landroid/app/Application;)Lkotlinx/coroutines/test/TestScope;
+	public static final fun getTestScopeOverride (Lcom/uber/autodispose/ScopeProvider;)Lkotlinx/coroutines/test/TestScope;
+}
+
+public final class com/uber/rib/core/TestRibDispatchers : com/uber/rib/core/RibDispatchersProvider {
+	public fun <init> ()V
+	public fun <init> (Lkotlinx/coroutines/test/TestCoroutineScheduler;Lkotlinx/coroutines/test/TestDispatcher;Lkotlinx/coroutines/test/TestDispatcher;Lkotlinx/coroutines/test/TestDispatcher;Lkotlinx/coroutines/test/TestDispatcher;)V
+	public synthetic fun <init> (Lkotlinx/coroutines/test/TestCoroutineScheduler;Lkotlinx/coroutines/test/TestDispatcher;Lkotlinx/coroutines/test/TestDispatcher;Lkotlinx/coroutines/test/TestDispatcher;Lkotlinx/coroutines/test/TestDispatcher;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component2 ()Lkotlinx/coroutines/test/TestDispatcher;
+	public final fun component3 ()Lkotlinx/coroutines/test/TestDispatcher;
+	public final fun component4 ()Lkotlinx/coroutines/test/TestDispatcher;
+	public final fun component5 ()Lkotlinx/coroutines/test/TestDispatcher;
+	public final fun copy (Lkotlinx/coroutines/test/TestCoroutineScheduler;Lkotlinx/coroutines/test/TestDispatcher;Lkotlinx/coroutines/test/TestDispatcher;Lkotlinx/coroutines/test/TestDispatcher;Lkotlinx/coroutines/test/TestDispatcher;)Lcom/uber/rib/core/TestRibDispatchers;
+	public static synthetic fun copy$default (Lcom/uber/rib/core/TestRibDispatchers;Lkotlinx/coroutines/test/TestCoroutineScheduler;Lkotlinx/coroutines/test/TestDispatcher;Lkotlinx/coroutines/test/TestDispatcher;Lkotlinx/coroutines/test/TestDispatcher;Lkotlinx/coroutines/test/TestDispatcher;ILjava/lang/Object;)Lcom/uber/rib/core/TestRibDispatchers;
+	public fun equals (Ljava/lang/Object;)Z
+	public synthetic fun getDefault ()Lkotlinx/coroutines/CoroutineDispatcher;
+	public fun getDefault ()Lkotlinx/coroutines/test/TestDispatcher;
+	public synthetic fun getIO ()Lkotlinx/coroutines/CoroutineDispatcher;
+	public fun getIO ()Lkotlinx/coroutines/test/TestDispatcher;
+	public fun getMain ()Lkotlinx/coroutines/MainCoroutineDispatcher;
+	public final fun getMainTestDelegate ()Lkotlinx/coroutines/test/TestDispatcher;
+	public synthetic fun getUnconfined ()Lkotlinx/coroutines/CoroutineDispatcher;
+	public fun getUnconfined ()Lkotlinx/coroutines/test/TestDispatcher;
+	public fun hashCode ()I
+	public final fun installTestDispatchers ()V
+	public final fun resetTestDispatchers ()V
+	public fun toString ()Ljava/lang/String;
+}
+

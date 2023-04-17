@@ -1,0 +1,8 @@
+public final class com/uber/rib/core/RouterDebugUtils {
+	public static final field INSTANCE Lcom/uber/rib/core/RouterDebugUtils;
+	public static final fun printRouterSubtree (Lcom/uber/rib/core/Router;)V
+	public static final fun printRouterSubtree (Lcom/uber/rib/core/Router;Ljava/lang/String;)V
+	public static final fun printRouterSubtree (Lcom/uber/rib/core/Router;Ljava/lang/String;Z)V
+	public static synthetic fun printRouterSubtree$default (Lcom/uber/rib/core/Router;Ljava/lang/String;ZILjava/lang/Object;)V
+}
+

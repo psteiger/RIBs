@@ -31,6 +31,9 @@ public object RibDispatchers : RibDispatchersProvider {
   override val Unconfined: CoroutineDispatcher get() = RibCoroutinesConfig.dispatchers.Unconfined
 }
 
+public fun x() {
+}
+
 public data class DefaultRibDispatchers(
   override val Default: CoroutineDispatcher = Dispatchers.Default,
   override val Main: MainCoroutineDispatcher = Dispatchers.Main,

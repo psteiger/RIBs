@@ -1,0 +1,37 @@
+public abstract interface class com/uber/rib/workflow/core/ActionableItem {
+	public abstract fun lifecycle ()Lio/reactivex/Observable;
+}
+
+public class com/uber/rib/workflow/core/Step {
+	public static final field Companion Lcom/uber/rib/workflow/core/Step$Companion;
+	public synthetic fun <init> (Lio/reactivex/Single;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public static final fun from (Lio/reactivex/Single;)Lcom/uber/rib/workflow/core/Step;
+	public static final fun fromOptional (Lio/reactivex/Single;)Lcom/uber/rib/workflow/core/Step;
+	public fun onStep (Lio/reactivex/functions/BiFunction;)Lcom/uber/rib/workflow/core/Step;
+}
+
+public final class com/uber/rib/workflow/core/Step$Companion {
+	public final fun from (Lio/reactivex/Single;)Lcom/uber/rib/workflow/core/Step;
+	public final fun fromOptional (Lio/reactivex/Single;)Lcom/uber/rib/workflow/core/Step;
+}
+
+public class com/uber/rib/workflow/core/Step$Data {
+	public static final field Companion Lcom/uber/rib/workflow/core/Step$Data$Companion;
+	public fun <init> (Ljava/lang/Object;Lcom/uber/rib/workflow/core/ActionableItem;)V
+	public static final fun toActionableItem (Lcom/uber/rib/workflow/core/ActionableItem;)Lcom/uber/rib/workflow/core/Step$Data;
+}
+
+public final class com/uber/rib/workflow/core/Step$Data$Companion {
+	public final fun toActionableItem (Lcom/uber/rib/workflow/core/ActionableItem;)Lcom/uber/rib/workflow/core/Step$Data;
+}
+
+public class com/uber/rib/workflow/core/Step$NoValue {
+	public fun <init> ()V
+}
+
+public abstract class com/uber/rib/workflow/core/Workflow {
+	public fun <init> ()V
+	public fun createSingle (Lcom/uber/rib/workflow/core/ActionableItem;)Lio/reactivex/Single;
+	protected abstract fun getSteps (Lcom/uber/rib/workflow/core/ActionableItem;)Lcom/uber/rib/workflow/core/Step;
+}
+

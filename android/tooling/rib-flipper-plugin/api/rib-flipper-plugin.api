@@ -1,0 +1,19 @@
+public final class com/uber/rib/flipper/RibTreeMessageType : java/lang/Enum {
+	public static final field HIDE_HIGHLIGHT Lcom/uber/rib/flipper/RibTreeMessageType;
+	public static final field SHOW_HIGHLIGHT Lcom/uber/rib/flipper/RibTreeMessageType;
+	public static fun valueOf (Ljava/lang/String;)Lcom/uber/rib/flipper/RibTreeMessageType;
+	public static fun values ()[Lcom/uber/rib/flipper/RibTreeMessageType;
+}
+
+public final class com/uber/rib/flipper/RibTreePlugin : com/facebook/flipper/core/FlipperPlugin {
+	public static final field Companion Lcom/uber/rib/flipper/RibTreePlugin$Companion;
+	public fun <init> ()V
+	public fun getId ()Ljava/lang/String;
+	public fun onConnect (Lcom/facebook/flipper/core/FlipperConnection;)V
+	public fun onDisconnect ()V
+	public fun runInBackground ()Z
+}
+
+public final class com/uber/rib/flipper/RibTreePlugin$Companion {
+}
+

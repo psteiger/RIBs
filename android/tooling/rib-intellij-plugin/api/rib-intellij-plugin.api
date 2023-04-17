@@ -1,0 +1,531 @@
+public final class com/uber/intellij/plugin/android/rib/AndroidDeviceRepository : com/android/ddmlib/AndroidDebugBridge$IDeviceChangeListener, com/intellij/openapi/Disposable {
+	public fun <init> (Lcom/intellij/openapi/project/Project;)V
+	public final fun addListener (Lcom/uber/intellij/plugin/android/rib/AndroidDeviceRepository$Listener;)V
+	public fun deviceChanged (Lcom/android/ddmlib/IDevice;I)V
+	public fun deviceConnected (Lcom/android/ddmlib/IDevice;)V
+	public fun deviceDisconnected (Lcom/android/ddmlib/IDevice;)V
+	public fun dispose ()V
+	public final fun getProject ()Lcom/intellij/openapi/project/Project;
+	public final fun isBridgeConnected ()Z
+	public final fun removeListener (Lcom/uber/intellij/plugin/android/rib/AndroidDeviceRepository$Listener;)V
+}
+
+public abstract interface class com/uber/intellij/plugin/android/rib/AndroidDeviceRepository$Listener {
+	public abstract fun onAvailableDevicesChanged (Ljava/util/List;)V
+}
+
+public final class com/uber/intellij/plugin/android/rib/AttachRibProjectServiceActivity : com/intellij/openapi/startup/StartupActivity$Background {
+	public fun <init> ()V
+	public fun runActivity (Lcom/intellij/openapi/project/Project;)V
+}
+
+public final class com/uber/intellij/plugin/android/rib/CommandLineUtils {
+	public static final field INSTANCE Lcom/uber/intellij/plugin/android/rib/CommandLineUtils;
+	public final fun executeWithLineOutput (Lcom/intellij/openapi/project/Project;Ljava/lang/String;[Ljava/lang/String;)Lcom/uber/intellij/plugin/android/rib/CommandLineUtils$ProcessOutput;
+	public final fun which (Lcom/intellij/openapi/project/Project;Ljava/lang/String;)Ljava/lang/String;
+}
+
+public final class com/uber/intellij/plugin/android/rib/CommandLineUtils$ProcessOutput {
+	public fun <init> (Ljava/util/List;Ljava/util/List;)V
+	public final fun error ()Ljava/util/List;
+	public final fun output ()Ljava/util/List;
+}
+
+public final class com/uber/intellij/plugin/android/rib/RibHierarchyBrowser : com/uber/intellij/plugin/android/rib/ui/HierarchyBrowserBase {
+	public static final field Companion Lcom/uber/intellij/plugin/android/rib/RibHierarchyBrowser$Companion;
+	public static final field LABEL_GO_NEXT_RIB Ljava/lang/String;
+	public static final field LABEL_GO_PREVIOUS_RIB Ljava/lang/String;
+	public static final field TYPE_HIERARCHY_TYPE Ljava/lang/String;
+	public fun <init> (Lcom/intellij/openapi/project/Project;Lcom/uber/intellij/plugin/android/rib/RibHierarchyBrowser$Model;Lcom/intellij/psi/PsiElement;Lcom/uber/intellij/plugin/android/rib/RibHierarchyBrowser$Listener;)V
+	public final fun onModelUpdated (Lcom/uber/intellij/plugin/android/rib/RibHierarchyBrowser$Model;)V
+	public fun onRefreshComplete ()V
+}
+
+public final class com/uber/intellij/plugin/android/rib/RibHierarchyBrowser$Companion {
+}
+
+public abstract interface class com/uber/intellij/plugin/android/rib/RibHierarchyBrowser$Listener {
+	public abstract fun onSelectedRibChanged (Ljava/util/UUID;)V
+}
+
+public final class com/uber/intellij/plugin/android/rib/RibHierarchyBrowser$Model {
+	public fun <init> (Lcom/uber/intellij/plugin/android/rib/io/RibHost;Ljava/lang/String;Ljava/lang/String;)V
+	public synthetic fun <init> (Lcom/uber/intellij/plugin/android/rib/io/RibHost;Ljava/lang/String;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Lcom/uber/intellij/plugin/android/rib/io/RibHost;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun copy (Lcom/uber/intellij/plugin/android/rib/io/RibHost;Ljava/lang/String;Ljava/lang/String;)Lcom/uber/intellij/plugin/android/rib/RibHierarchyBrowser$Model;
+	public static synthetic fun copy$default (Lcom/uber/intellij/plugin/android/rib/RibHierarchyBrowser$Model;Lcom/uber/intellij/plugin/android/rib/io/RibHost;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lcom/uber/intellij/plugin/android/rib/RibHierarchyBrowser$Model;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getHost ()Lcom/uber/intellij/plugin/android/rib/io/RibHost;
+	public final fun getSelectedRibId ()Ljava/lang/String;
+	public final fun getSelectedViewId ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/uber/intellij/plugin/android/rib/RibHierarchyBrowser$Status : java/lang/Enum {
+	public static final field INITIALIZED Lcom/uber/intellij/plugin/android/rib/RibHierarchyBrowser$Status;
+	public static final field INITIALIZING Lcom/uber/intellij/plugin/android/rib/RibHierarchyBrowser$Status;
+	public static final field REFRESHING Lcom/uber/intellij/plugin/android/rib/RibHierarchyBrowser$Status;
+	public static final field UNINITIALIZED Lcom/uber/intellij/plugin/android/rib/RibHierarchyBrowser$Status;
+	public static fun valueOf (Ljava/lang/String;)Lcom/uber/intellij/plugin/android/rib/RibHierarchyBrowser$Status;
+	public static fun values ()[Lcom/uber/intellij/plugin/android/rib/RibHierarchyBrowser$Status;
+}
+
+public final class com/uber/intellij/plugin/android/rib/RibHierarchyPanel : javax/swing/JPanel, com/uber/intellij/plugin/android/rib/RibHierarchyBrowser$Listener, com/uber/intellij/plugin/android/rib/RibProjectService$Listener, com/uber/intellij/plugin/android/rib/RibViewBrowser$Listener, java/awt/event/ActionListener {
+	public static final field Companion Lcom/uber/intellij/plugin/android/rib/RibHierarchyPanel$Companion;
+	public fun <init> (Lcom/intellij/openapi/project/Project;Lcom/uber/intellij/plugin/android/rib/RibHierarchyBrowser$Model;)V
+	public fun actionPerformed (Ljava/awt/event/ActionEvent;)V
+	public final fun getProject ()Lcom/intellij/openapi/project/Project;
+	public final fun onAvailableDevicesChanged (Ljava/util/List;)V
+	public fun onModelUpdated (Lcom/uber/intellij/plugin/android/rib/RibHierarchyBrowser$Model;)V
+	public final fun onSelectedDeviceChanged (Lcom/android/ddmlib/IDevice;)V
+	public fun onSelectedRibChanged (Ljava/util/UUID;)V
+	public fun onSelectedViewChanged (Lcom/uber/intellij/plugin/android/rib/io/RibView;)V
+}
+
+public final class com/uber/intellij/plugin/android/rib/RibHierarchyPanel$Companion {
+}
+
+public final class com/uber/intellij/plugin/android/rib/RibHierarchyUtils {
+	public static final field Companion Lcom/uber/intellij/plugin/android/rib/RibHierarchyUtils$Companion;
+}
+
+public final class com/uber/intellij/plugin/android/rib/RibHierarchyUtils$Companion {
+	public final fun buildRootElement (Lcom/intellij/openapi/project/Project;)Lcom/intellij/psi/PsiClass;
+	public final fun displayPopup (Ljava/lang/String;Lcom/intellij/ui/awt/RelativePoint;Lcom/intellij/openapi/ui/MessageType;)V
+	public static synthetic fun displayPopup$default (Lcom/uber/intellij/plugin/android/rib/RibHierarchyUtils$Companion;Ljava/lang/String;Lcom/intellij/ui/awt/RelativePoint;Lcom/intellij/openapi/ui/MessageType;ILjava/lang/Object;)V
+	public final fun findRibNodeRecursive (Lcom/uber/intellij/plugin/android/rib/io/RibNode;Ljava/util/UUID;)Lcom/uber/intellij/plugin/android/rib/io/RibNode;
+	public final fun findRibViewRecursive (Lcom/uber/intellij/plugin/android/rib/io/RibView;Ljava/util/UUID;)Lcom/uber/intellij/plugin/android/rib/io/RibView;
+	public final fun formatQualifiedName (Ljava/lang/String;)Ljava/lang/String;
+	public final fun formatSimpleName (Ljava/lang/String;)Ljava/lang/String;
+	public final fun getEMPTY_UUID ()Ljava/util/UUID;
+	public final fun getPsiClass (Lcom/intellij/openapi/project/Project;Ljava/lang/String;)Lcom/intellij/psi/PsiClass;
+	public final fun getTagValueSuffix (Ljava/lang/String;)Ljava/lang/String;
+	public final fun getVirtualFile (Ljava/lang/String;)Lcom/intellij/openapi/vfs/VirtualFile;
+	public final fun isProjectLayoutFile (Lcom/intellij/openapi/project/Project;Lcom/intellij/openapi/vfs/VirtualFile;)Z
+	public final fun isRootElement (Lcom/intellij/psi/PsiElement;)Z
+	public final fun log (Ljava/lang/String;)V
+}
+
+public final class com/uber/intellij/plugin/android/rib/RibProjectService : com/intellij/openapi/Disposable, com/uber/intellij/plugin/android/rib/AndroidDeviceRepository$Listener {
+	public static final field Companion Lcom/uber/intellij/plugin/android/rib/RibProjectService$Companion;
+	public fun <init> (Lcom/intellij/openapi/project/Project;)V
+	public final fun attach ()V
+	public fun dispose ()V
+	public final fun enableLocateMode ()V
+	public final fun getProject ()Lcom/intellij/openapi/project/Project;
+	public final fun hasSelectedDevice ()Z
+	public final fun highlightRib (Ljava/util/UUID;)V
+	public final fun highlightView (Ljava/util/UUID;)V
+	public final fun isLocating ()Z
+	public fun onAvailableDevicesChanged (Ljava/util/List;)V
+	public final fun refreshRibHierarchy ()V
+	public final fun selectDevice (Lcom/android/ddmlib/IDevice;)V
+}
+
+public final class com/uber/intellij/plugin/android/rib/RibProjectService$Companion {
+}
+
+public abstract interface class com/uber/intellij/plugin/android/rib/RibProjectService$Listener {
+	public abstract fun onModelUpdated (Lcom/uber/intellij/plugin/android/rib/RibHierarchyBrowser$Model;)V
+}
+
+public final class com/uber/intellij/plugin/android/rib/RibViewBrowser : com/uber/intellij/plugin/android/rib/ui/HierarchyBrowserBase {
+	public static final field Companion Lcom/uber/intellij/plugin/android/rib/RibViewBrowser$Companion;
+	public static final field LABEL_GO_NEXT_RIB Ljava/lang/String;
+	public static final field LABEL_GO_PREVIOUS_RIB Ljava/lang/String;
+	public static final field TYPE_HIERARCHY_TYPE Ljava/lang/String;
+	public fun <init> (Lcom/intellij/openapi/project/Project;Lcom/uber/intellij/plugin/android/rib/RibViewBrowser$Model;Lcom/intellij/psi/PsiElement;Lcom/uber/intellij/plugin/android/rib/RibViewBrowser$Listener;)V
+	public final fun notifySelectedViewChanged ()V
+}
+
+public final class com/uber/intellij/plugin/android/rib/RibViewBrowser$Companion {
+}
+
+public abstract interface class com/uber/intellij/plugin/android/rib/RibViewBrowser$Listener {
+	public abstract fun onSelectedViewChanged (Lcom/uber/intellij/plugin/android/rib/io/RibView;)V
+}
+
+public final class com/uber/intellij/plugin/android/rib/RibViewBrowser$Model {
+	public fun <init> (Lcom/uber/intellij/plugin/android/rib/io/RibNode;Lcom/uber/intellij/plugin/android/rib/io/RibView;Lcom/uber/intellij/plugin/android/rib/io/RibNode;Ljava/lang/String;Ljava/lang/String;)V
+	public synthetic fun <init> (Lcom/uber/intellij/plugin/android/rib/io/RibNode;Lcom/uber/intellij/plugin/android/rib/io/RibView;Lcom/uber/intellij/plugin/android/rib/io/RibNode;Ljava/lang/String;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Lcom/uber/intellij/plugin/android/rib/io/RibNode;
+	public final fun component2 ()Lcom/uber/intellij/plugin/android/rib/io/RibView;
+	public final fun component3 ()Lcom/uber/intellij/plugin/android/rib/io/RibNode;
+	public final fun component4 ()Ljava/lang/String;
+	public final fun component5 ()Ljava/lang/String;
+	public final fun copy (Lcom/uber/intellij/plugin/android/rib/io/RibNode;Lcom/uber/intellij/plugin/android/rib/io/RibView;Lcom/uber/intellij/plugin/android/rib/io/RibNode;Ljava/lang/String;Ljava/lang/String;)Lcom/uber/intellij/plugin/android/rib/RibViewBrowser$Model;
+	public static synthetic fun copy$default (Lcom/uber/intellij/plugin/android/rib/RibViewBrowser$Model;Lcom/uber/intellij/plugin/android/rib/io/RibNode;Lcom/uber/intellij/plugin/android/rib/io/RibView;Lcom/uber/intellij/plugin/android/rib/io/RibNode;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lcom/uber/intellij/plugin/android/rib/RibViewBrowser$Model;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getRibNode ()Lcom/uber/intellij/plugin/android/rib/io/RibNode;
+	public final fun getRibView ()Lcom/uber/intellij/plugin/android/rib/io/RibView;
+	public final fun getRootRib ()Lcom/uber/intellij/plugin/android/rib/io/RibNode;
+	public final fun getSelectedRibId ()Ljava/lang/String;
+	public final fun getSelectedViewId ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/uber/intellij/plugin/android/rib/io/AckRequest : com/uber/intellij/plugin/android/rib/io/Request {
+	public fun <init> (Lcom/android/ddmlib/IDevice;)V
+}
+
+public final class com/uber/intellij/plugin/android/rib/io/AckResponse : com/uber/intellij/plugin/android/rib/io/Response {
+	public fun <init> ()V
+}
+
+public final class com/uber/intellij/plugin/android/rib/io/EnableLocateModeRequest : com/uber/intellij/plugin/android/rib/io/Request {
+	public static final field Companion Lcom/uber/intellij/plugin/android/rib/io/EnableLocateModeRequest$Companion;
+	public fun <init> (Lcom/android/ddmlib/IDevice;Z)V
+}
+
+public final class com/uber/intellij/plugin/android/rib/io/EnableLocateModeRequest$Companion {
+}
+
+public final class com/uber/intellij/plugin/android/rib/io/LogcatMessageDecoder {
+	public fun <init> ()V
+	public final fun getComplete ()Z
+	public final fun getMessage ()Ljava/lang/String;
+	public final fun onMessagePartReceived (Ljava/lang/String;)V
+}
+
+public final class com/uber/intellij/plugin/android/rib/io/LogcatRequestProcessor : com/uber/intellij/plugin/android/rib/io/RequestProcessor {
+	public static final field Companion Lcom/uber/intellij/plugin/android/rib/io/LogcatRequestProcessor$Companion;
+	public fun <init> ()V
+	public fun execute (Lcom/uber/intellij/plugin/android/rib/io/Request;)Lcom/google/common/util/concurrent/ListenableFuture;
+}
+
+public final class com/uber/intellij/plugin/android/rib/io/LogcatRequestProcessor$Companion {
+}
+
+public class com/uber/intellij/plugin/android/rib/io/Request {
+	public fun <init> (Lcom/android/ddmlib/IDevice;Ljava/lang/String;Ljava/lang/Class;Ljava/util/List;II)V
+	public synthetic fun <init> (Lcom/android/ddmlib/IDevice;Ljava/lang/String;Ljava/lang/Class;Ljava/util/List;IIILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun getClazz ()Ljava/lang/Class;
+	public final fun getCommand ()Ljava/lang/String;
+	public final fun getDevice ()Lcom/android/ddmlib/IDevice;
+	public final fun getNumRetries ()I
+	public final fun getParams ()Ljava/util/List;
+	public final fun getTimeoutMs ()I
+}
+
+public abstract interface class com/uber/intellij/plugin/android/rib/io/RequestProcessor {
+	public abstract fun execute (Lcom/uber/intellij/plugin/android/rib/io/Request;)Lcom/google/common/util/concurrent/ListenableFuture;
+}
+
+public class com/uber/intellij/plugin/android/rib/io/Response {
+	public fun <init> ()V
+	public final fun getErrorDescription ()Ljava/lang/String;
+	public final fun getPayload ()Ljava/lang/Object;
+	public final fun getSuccess ()Z
+	public final fun getVersion ()I
+	public final fun setErrorDescription (Ljava/lang/String;)V
+	public final fun setPayload (Ljava/lang/Object;)V
+	public final fun setSuccess (Z)V
+	public final fun setVersion (I)V
+}
+
+public final class com/uber/intellij/plugin/android/rib/io/RibActivity {
+	public fun <init> (Ljava/lang/String;Lcom/uber/intellij/plugin/android/rib/io/RibNode;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Lcom/uber/intellij/plugin/android/rib/io/RibNode;
+	public final fun copy (Ljava/lang/String;Lcom/uber/intellij/plugin/android/rib/io/RibNode;)Lcom/uber/intellij/plugin/android/rib/io/RibActivity;
+	public static synthetic fun copy$default (Lcom/uber/intellij/plugin/android/rib/io/RibActivity;Ljava/lang/String;Lcom/uber/intellij/plugin/android/rib/io/RibNode;ILjava/lang/Object;)Lcom/uber/intellij/plugin/android/rib/io/RibActivity;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getName ()Ljava/lang/String;
+	public final fun getRootRib ()Lcom/uber/intellij/plugin/android/rib/io/RibNode;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/uber/intellij/plugin/android/rib/io/RibApplication {
+	public fun <init> (Ljava/lang/String;Ljava/util/List;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/util/List;
+	public final fun copy (Ljava/lang/String;Ljava/util/List;)Lcom/uber/intellij/plugin/android/rib/io/RibApplication;
+	public static synthetic fun copy$default (Lcom/uber/intellij/plugin/android/rib/io/RibApplication;Ljava/lang/String;Ljava/util/List;ILjava/lang/Object;)Lcom/uber/intellij/plugin/android/rib/io/RibApplication;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getActivities ()Ljava/util/List;
+	public final fun getName ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/uber/intellij/plugin/android/rib/io/RibHierarchyRequest : com/uber/intellij/plugin/android/rib/io/Request {
+	public fun <init> (Lcom/android/ddmlib/IDevice;)V
+}
+
+public final class com/uber/intellij/plugin/android/rib/io/RibHierarchyResponse : com/uber/intellij/plugin/android/rib/io/Response {
+	public fun <init> (Lcom/uber/intellij/plugin/android/rib/io/RibHost;)V
+	public final fun component1 ()Lcom/uber/intellij/plugin/android/rib/io/RibHost;
+	public final fun copy (Lcom/uber/intellij/plugin/android/rib/io/RibHost;)Lcom/uber/intellij/plugin/android/rib/io/RibHierarchyResponse;
+	public static synthetic fun copy$default (Lcom/uber/intellij/plugin/android/rib/io/RibHierarchyResponse;Lcom/uber/intellij/plugin/android/rib/io/RibHost;ILjava/lang/Object;)Lcom/uber/intellij/plugin/android/rib/io/RibHierarchyResponse;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getHost ()Lcom/uber/intellij/plugin/android/rib/io/RibHost;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/uber/intellij/plugin/android/rib/io/RibHierarchyWithSelectionResponse : com/uber/intellij/plugin/android/rib/io/Response {
+	public fun <init> (Lcom/uber/intellij/plugin/android/rib/io/RibHostWithSelection;)V
+	public final fun component1 ()Lcom/uber/intellij/plugin/android/rib/io/RibHostWithSelection;
+	public final fun copy (Lcom/uber/intellij/plugin/android/rib/io/RibHostWithSelection;)Lcom/uber/intellij/plugin/android/rib/io/RibHierarchyWithSelectionResponse;
+	public static synthetic fun copy$default (Lcom/uber/intellij/plugin/android/rib/io/RibHierarchyWithSelectionResponse;Lcom/uber/intellij/plugin/android/rib/io/RibHostWithSelection;ILjava/lang/Object;)Lcom/uber/intellij/plugin/android/rib/io/RibHierarchyWithSelectionResponse;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getHost ()Lcom/uber/intellij/plugin/android/rib/io/RibHostWithSelection;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/uber/intellij/plugin/android/rib/io/RibHighlightRequest : com/uber/intellij/plugin/android/rib/io/Request {
+	public fun <init> (Lcom/android/ddmlib/IDevice;Ljava/util/UUID;)V
+}
+
+public final class com/uber/intellij/plugin/android/rib/io/RibHighlightResponse : com/uber/intellij/plugin/android/rib/io/Response {
+	public fun <init> ()V
+}
+
+public final class com/uber/intellij/plugin/android/rib/io/RibHost {
+	public fun <init> (Ljava/lang/String;Lcom/uber/intellij/plugin/android/rib/io/RibApplication;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Lcom/uber/intellij/plugin/android/rib/io/RibApplication;
+	public final fun copy (Ljava/lang/String;Lcom/uber/intellij/plugin/android/rib/io/RibApplication;)Lcom/uber/intellij/plugin/android/rib/io/RibHost;
+	public static synthetic fun copy$default (Lcom/uber/intellij/plugin/android/rib/io/RibHost;Ljava/lang/String;Lcom/uber/intellij/plugin/android/rib/io/RibApplication;ILjava/lang/Object;)Lcom/uber/intellij/plugin/android/rib/io/RibHost;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getApplication ()Lcom/uber/intellij/plugin/android/rib/io/RibApplication;
+	public final fun getName ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/uber/intellij/plugin/android/rib/io/RibHostWithSelection {
+	public fun <init> (Ljava/lang/String;Lcom/uber/intellij/plugin/android/rib/io/RibApplication;Ljava/lang/String;Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Lcom/uber/intellij/plugin/android/rib/io/RibApplication;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Lcom/uber/intellij/plugin/android/rib/io/RibApplication;Ljava/lang/String;Ljava/lang/String;)Lcom/uber/intellij/plugin/android/rib/io/RibHostWithSelection;
+	public static synthetic fun copy$default (Lcom/uber/intellij/plugin/android/rib/io/RibHostWithSelection;Ljava/lang/String;Lcom/uber/intellij/plugin/android/rib/io/RibApplication;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lcom/uber/intellij/plugin/android/rib/io/RibHostWithSelection;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getApplication ()Lcom/uber/intellij/plugin/android/rib/io/RibApplication;
+	public final fun getName ()Ljava/lang/String;
+	public final fun getSelectedRibId ()Ljava/lang/String;
+	public final fun getSelectedViewId ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/uber/intellij/plugin/android/rib/io/RibNode {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Lcom/uber/intellij/plugin/android/rib/io/RibView;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/util/List;
+	public final fun component4 ()Lcom/uber/intellij/plugin/android/rib/io/RibView;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Lcom/uber/intellij/plugin/android/rib/io/RibView;)Lcom/uber/intellij/plugin/android/rib/io/RibNode;
+	public static synthetic fun copy$default (Lcom/uber/intellij/plugin/android/rib/io/RibNode;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Lcom/uber/intellij/plugin/android/rib/io/RibView;ILjava/lang/Object;)Lcom/uber/intellij/plugin/android/rib/io/RibNode;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getChildren ()Ljava/util/List;
+	public final fun getId ()Ljava/lang/String;
+	public final fun getName ()Ljava/lang/String;
+	public final fun getView ()Lcom/uber/intellij/plugin/android/rib/io/RibView;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/uber/intellij/plugin/android/rib/io/RibView {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()Ljava/lang/String;
+	public final fun component5 ()Ljava/util/List;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;)Lcom/uber/intellij/plugin/android/rib/io/RibView;
+	public static synthetic fun copy$default (Lcom/uber/intellij/plugin/android/rib/io/RibView;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;ILjava/lang/Object;)Lcom/uber/intellij/plugin/android/rib/io/RibView;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getChildren ()Ljava/util/List;
+	public final fun getId ()Ljava/lang/String;
+	public final fun getLayoutId ()Ljava/lang/String;
+	public final fun getName ()Ljava/lang/String;
+	public final fun getViewId ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public abstract class com/uber/intellij/plugin/android/rib/ui/HierarchyBrowserBase : com/intellij/ide/hierarchy/HierarchyBrowserBaseEx {
+	public fun <init> (Lcom/intellij/openapi/project/Project;Lcom/intellij/psi/PsiElement;)V
+	protected fun configureTree (Lcom/intellij/ui/treeStructure/Tree;)V
+	protected fun doRefresh (Z)V
+	public final fun expandAll ()V
+	public final fun getProject ()Lcom/intellij/openapi/project/Project;
+	public fun onRefreshComplete ()V
+	public final fun selectById (Ljava/lang/String;)V
+}
+
+public final class com/uber/intellij/plugin/android/rib/ui/RibHierarchyActivityDescriptor : com/uber/intellij/plugin/android/rib/ui/RibHierarchyDescriptor {
+	public fun <init> (Lcom/intellij/openapi/project/Project;Lcom/intellij/ide/hierarchy/HierarchyNodeDescriptor;Lcom/intellij/psi/PsiClass;Lcom/uber/intellij/plugin/android/rib/io/RibActivity;)V
+	public final fun getRibActivity ()Lcom/uber/intellij/plugin/android/rib/io/RibActivity;
+	public fun updateText (Lcom/intellij/openapi/roots/ui/util/CompositeAppearance;)V
+}
+
+public final class com/uber/intellij/plugin/android/rib/ui/RibHierarchyApplicationDescriptor : com/uber/intellij/plugin/android/rib/ui/RibHierarchyDescriptor {
+	public fun <init> (Lcom/intellij/openapi/project/Project;Lcom/intellij/ide/hierarchy/HierarchyNodeDescriptor;Lcom/intellij/psi/PsiClass;Lcom/uber/intellij/plugin/android/rib/io/RibApplication;)V
+	public final fun getRibApplication ()Lcom/uber/intellij/plugin/android/rib/io/RibApplication;
+	public fun updateText (Lcom/intellij/openapi/roots/ui/util/CompositeAppearance;)V
+}
+
+public class com/uber/intellij/plugin/android/rib/ui/RibHierarchyDescriptor : com/intellij/ide/hierarchy/HierarchyNodeDescriptor {
+	public fun <init> (Lcom/intellij/openapi/project/Project;Lcom/intellij/ide/hierarchy/HierarchyNodeDescriptor;Lcom/intellij/psi/PsiElement;Z)V
+	public final fun compareTo (Lcom/intellij/openapi/roots/ui/util/CompositeAppearance;Lcom/intellij/openapi/roots/ui/util/CompositeAppearance;)Z
+	public final fun getDefaultTextAttributes (Z)Lcom/intellij/openapi/editor/markup/TextAttributes;
+	public static synthetic fun getDefaultTextAttributes$default (Lcom/uber/intellij/plugin/android/rib/ui/RibHierarchyDescriptor;ZILjava/lang/Object;)Lcom/intellij/openapi/editor/markup/TextAttributes;
+	public final fun getElement ()Lcom/intellij/psi/PsiElement;
+	protected fun getIcon (Lcom/intellij/psi/PsiElement;)Ljavax/swing/Icon;
+	public final fun getParentDescriptor ()Lcom/intellij/ide/hierarchy/HierarchyNodeDescriptor;
+	public fun getUniqueId ()Ljava/lang/String;
+	public fun update ()Z
+	public fun updateText (Lcom/intellij/openapi/roots/ui/util/CompositeAppearance;)V
+}
+
+public final class com/uber/intellij/plugin/android/rib/ui/RibHierarchyNodeDescriptor : com/uber/intellij/plugin/android/rib/ui/RibHierarchyDescriptor {
+	public fun <init> (Lcom/intellij/openapi/project/Project;Lcom/intellij/ide/hierarchy/HierarchyNodeDescriptor;Lcom/intellij/psi/PsiClass;Lcom/uber/intellij/plugin/android/rib/io/RibNode;)V
+	public final fun getRibNode ()Lcom/uber/intellij/plugin/android/rib/io/RibNode;
+	public fun getUniqueId ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
+	public fun updateText (Lcom/intellij/openapi/roots/ui/util/CompositeAppearance;)V
+}
+
+public final class com/uber/intellij/plugin/android/rib/ui/RibHierarchyRootNodeDescriptor : com/uber/intellij/plugin/android/rib/ui/RibHierarchyDescriptor {
+	public static final field Companion Lcom/uber/intellij/plugin/android/rib/ui/RibHierarchyRootNodeDescriptor$Companion;
+	public static final field LABEL_ERROR Ljava/lang/String;
+	public static final field LABEL_NO_BRIDGE Ljava/lang/String;
+	public static final field LABEL_NO_DEVICE Ljava/lang/String;
+	public static final field LABEL_WAIT Ljava/lang/String;
+	public fun <init> (Lcom/intellij/openapi/project/Project;Lcom/intellij/psi/PsiElement;Lcom/uber/intellij/plugin/android/rib/io/RibHost;Lcom/uber/intellij/plugin/android/rib/RibHierarchyBrowser$Status;)V
+	public final fun getRibHost ()Lcom/uber/intellij/plugin/android/rib/io/RibHost;
+	public fun updateText (Lcom/intellij/openapi/roots/ui/util/CompositeAppearance;)V
+}
+
+public final class com/uber/intellij/plugin/android/rib/ui/RibHierarchyRootNodeDescriptor$Companion {
+}
+
+public final class com/uber/intellij/plugin/android/rib/ui/RibHierarchyTreeStructure : com/intellij/ide/hierarchy/HierarchyTreeStructure {
+	public fun <init> (Lcom/intellij/openapi/project/Project;Lcom/intellij/ide/hierarchy/HierarchyNodeDescriptor;)V
+}
+
+public class com/uber/intellij/plugin/android/rib/ui/RibViewNodeDescriptor : com/uber/intellij/plugin/android/rib/ui/RibHierarchyDescriptor {
+	public fun <init> (Lcom/intellij/openapi/project/Project;Lcom/intellij/psi/PsiElement;Lcom/uber/intellij/plugin/android/rib/io/RibNode;Lcom/uber/intellij/plugin/android/rib/io/RibView;)V
+	protected fun getIcon (Lcom/intellij/psi/PsiElement;)Ljavax/swing/Icon;
+	public final fun getRibNode ()Lcom/uber/intellij/plugin/android/rib/io/RibNode;
+	public final fun getRibView ()Lcom/uber/intellij/plugin/android/rib/io/RibView;
+	public fun getUniqueId ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
+	public fun updateText (Lcom/intellij/openapi/roots/ui/util/CompositeAppearance;)V
+}
+
+public final class com/uber/intellij/plugin/android/rib/ui/RibViewRootNodeDescriptor : com/uber/intellij/plugin/android/rib/ui/RibViewNodeDescriptor {
+	public fun <init> (Lcom/intellij/openapi/project/Project;Lcom/intellij/psi/PsiElement;Lcom/uber/intellij/plugin/android/rib/io/RibNode;Lcom/uber/intellij/plugin/android/rib/io/RibView;)V
+	public fun updateText (Lcom/intellij/openapi/roots/ui/util/CompositeAppearance;)V
+}
+
+public abstract class com/uber/presidio/intellij_plugin/action/rib/GenerateAction : com/intellij/openapi/actionSystem/AnAction {
+	public fun <init> ()V
+	protected fun generate (Ljava/util/List;Ljava/util/List;)V
+	protected final fun getPackageName ()Ljava/lang/String;
+	public final fun update (Lcom/intellij/openapi/actionSystem/AnActionEvent;)V
+}
+
+public class com/uber/presidio/intellij_plugin/action/rib/GenerateRibAction : com/uber/presidio/intellij_plugin/action/rib/GenerateAction, com/uber/presidio/intellij_plugin/action/rib/GenerateRibDialog$Listener {
+	public fun <init> ()V
+	public fun actionPerformed (Lcom/intellij/openapi/actionSystem/AnActionEvent;)V
+	public fun onGenerateClicked (Ljava/lang/String;ZZ)V
+}
+
+public class com/uber/presidio/intellij_plugin/action/rib/GenerateRibDialog : com/intellij/openapi/ui/DialogWrapper {
+	public synthetic fun $$$getRootComponent$$$ ()Ljavax/swing/JComponent;
+	public fun <init> (Lcom/uber/presidio/intellij_plugin/action/rib/GenerateRibDialog$Listener;)V
+	protected fun createCenterPanel ()Ljavax/swing/JComponent;
+	protected fun doOKAction ()V
+}
+
+public abstract interface class com/uber/presidio/intellij_plugin/action/rib/GenerateRibDialog$Listener {
+	public abstract fun onGenerateClicked (Ljava/lang/String;ZZ)V
+}
+
+public final class com/uber/presidio/intellij_plugin/action/rib/Generators {
+	public static fun getGeneratorsForRibWithPresenterAndView (Ljava/lang/String;Ljava/lang/String;Z)Lcom/uber/presidio/intellij_plugin/generator/GeneratorPair;
+	public static fun getGeneratorsForRibWithoutPresenterAndView (Ljava/lang/String;Ljava/lang/String;Z)Lcom/uber/presidio/intellij_plugin/generator/GeneratorPair;
+}
+
+public abstract class com/uber/presidio/intellij_plugin/generator/Generator {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;ZLjava/lang/String;)V
+	public final fun generate ()Ljava/lang/String;
+	public abstract fun getClassName ()Ljava/lang/String;
+	public final fun getFileExtension ()Ljava/lang/String;
+	public final fun getPackageName ()Ljava/lang/String;
+	public final fun getRibName ()Ljava/lang/String;
+	protected final fun getTemplateValuesMap ()Ljava/util/Map;
+}
+
+public class com/uber/presidio/intellij_plugin/generator/GeneratorPair {
+	public fun <init> (Ljava/util/List;Ljava/util/List;)V
+	public fun getMainSourceSetGenerators ()Ljava/util/List;
+	public fun getTestSourceSetGenerators ()Ljava/util/List;
+}
+
+public class com/uber/presidio/intellij_plugin/generator/rib/BuilderGenerator : com/uber/presidio/intellij_plugin/generator/Generator {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Z)V
+	public fun getClassName ()Ljava/lang/String;
+}
+
+public class com/uber/presidio/intellij_plugin/generator/rib/InteractorWithEmptyPresenterGenerator : com/uber/presidio/intellij_plugin/generator/Generator {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Z)V
+	public fun getClassName ()Ljava/lang/String;
+}
+
+public class com/uber/presidio/intellij_plugin/generator/rib/InteractorWithEmptyPresenterTestGenerator : com/uber/presidio/intellij_plugin/generator/Generator {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Z)V
+	public fun getClassName ()Ljava/lang/String;
+}
+
+public class com/uber/presidio/intellij_plugin/generator/rib/InteractorWithPresenterGenerator : com/uber/presidio/intellij_plugin/generator/Generator {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Z)V
+	public fun getClassName ()Ljava/lang/String;
+}
+
+public class com/uber/presidio/intellij_plugin/generator/rib/InteractorWithPresenterTestGenerator : com/uber/presidio/intellij_plugin/generator/Generator {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Z)V
+	public fun getClassName ()Ljava/lang/String;
+}
+
+public class com/uber/presidio/intellij_plugin/generator/rib/RouterGenerator : com/uber/presidio/intellij_plugin/generator/Generator {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Z)V
+	public fun getClassName ()Ljava/lang/String;
+}
+
+public class com/uber/presidio/intellij_plugin/generator/rib/RouterTestGenerator : com/uber/presidio/intellij_plugin/generator/Generator {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Z)V
+	public fun getClassName ()Ljava/lang/String;
+}
+
+public class com/uber/presidio/intellij_plugin/generator/rib/ViewBuilderGenerator : com/uber/presidio/intellij_plugin/generator/Generator {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Z)V
+	public fun getClassName ()Ljava/lang/String;
+}
+
+public class com/uber/presidio/intellij_plugin/generator/rib/ViewGenerator : com/uber/presidio/intellij_plugin/generator/Generator {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Z)V
+	public fun getClassName ()Ljava/lang/String;
+}
+
+public class com/uber/presidio/intellij_plugin/generator/rib/ViewRouterGenerator : com/uber/presidio/intellij_plugin/generator/Generator {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Z)V
+	public fun getClassName ()Ljava/lang/String;
+}
+
+public class com/uber/presidio/intellij_plugin/generator/rib/ViewRouterTestGenerator : com/uber/presidio/intellij_plugin/generator/Generator {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Z)V
+	public fun getClassName ()Ljava/lang/String;
+}
+

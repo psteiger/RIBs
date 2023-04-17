@@ -1,0 +1,24 @@
+public class com/uber/rib/compiler/Constants {
+	public static final field Companion Lcom/uber/rib/compiler/Constants$Companion;
+	public static final field INTERACTOR_TEST_CREATOR_METHOD_NAME Ljava/lang/String;
+	public static final field INTERACTOR_TEST_CREATOR_PREFIX Ljava/lang/String;
+	public static final field INTERACTOR_TEST_CREATOR_SUFFIX Ljava/lang/String;
+	public fun <init> ()V
+}
+
+public final class com/uber/rib/compiler/Constants$Companion {
+}
+
+public class com/uber/rib/compiler/InteractorTestGenerator : com/uber/rib/compiler/Generator {
+	public fun <init> (Ljavax/annotation/processing/ProcessingEnvironment;Lcom/uber/rib/compiler/ErrorReporter;)V
+	public synthetic fun generate (Lcom/uber/rib/compiler/AnnotatedClass;)V
+	public fun generate (Lcom/uber/rib/compiler/InteractorAnnotatedClass;)V
+}
+
+public class com/uber/rib/compiler/RibTestProcessor : com/uber/rib/compiler/RibProcessor {
+	public fun <init> ()V
+	protected fun getProcessorPipelines (Lcom/uber/rib/compiler/ProcessContext;)Ljava/util/List;
+	public fun getSupportedAnnotationTypes ()Ljava/util/Set;
+	public fun init (Ljavax/annotation/processing/ProcessingEnvironment;)V
+}
+
